@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Dialog System ; Background ; Image ; Music -->
+<root>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>这是哪？啊？我好像回家打开家门时，一道白光射出，然后，然后------</content>
+  </say>
+  <say>
+    <name>一团黑色人影</name>
+    <image>NPC</image>
+    <content>过来吧，聆听汝的召唤，破碎吧现实，崩裂吧精神，放逐吧这个世界！</content>
+  </say>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>是谁？？？！！。。。。说人话！！</content>
+  </say>
+  <say>
+    <name>一团黑色人影</name>
+    <image>NPC</image>
+    <content>你好吉倪邰槑，我是这个世界的管理者，我是阿尔法，我是欧米伽，我是太初的，我是终末的，我是永恒的，我的名字叫*****！</content>
+  </say>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>哦，*****你好，这里是哪，我为什么在这？</content>
+  </say>
+  <say>
+    <name>一团黑色人影</name>
+    <image>NPC</image>
+    <content>这里是门的世界，你被我的意志选中，成为我的使者，代我行走于大地之上，穿梭于门扉之间，聚集创世之力，方可开启归途。</content>
+  </say>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>说人话！！！</content>
+  </say>
+  <say>
+    <name>一团黑色人影</name>
+    <image>NPC</image>
+    <content>这里是门的世界，不知道怎么的你来到了这，你需要收集最终大门的钥匙，关卡中各种门有各种效果</content>
+  </say>
+  <say>
+    <name>一团黑色人影</name>
+    <image>NPC</image>
+    <content>比如加速门可以给你一次超级跳跃和冲刺，按空格跳，按k冲刺，好了，快去开始你波澜壮阔的异世界生活吧，我要摸鱼了。</content>
+  </say>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>。。。。wd***，再见，神经病！</content>
+  </say>
+</root>
