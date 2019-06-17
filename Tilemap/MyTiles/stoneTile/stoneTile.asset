@@ -56,7 +56,7 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
-  - m_Neighbors: 0000000001000000000000000100000001000000000000000100000000000000
+  - m_Neighbors: 0100000001000000010000000100000001000000010000000100000001000000
     m_Sprites:
     - {fileID: 21300000, guid: 86a1e9cc55a601049ae3bcef7f936d0b, type: 3}
     m_GameObject: {fileID: 0}
@@ -99,6 +99,46 @@ MonoBehaviour:
   - m_Neighbors: 0000000001000000000000000100000002000000000000000200000000000000
     m_Sprites:
     - {fileID: 21300000, guid: 015ed843ac9bc3e42b4d6c14fae6f24e, type: 3}
+    m_GameObject: {fileID: 0}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_RuleTransform: 0
+    m_Output: 0
+    m_ColliderType: 1
+    m_RandomTransform: 0
+  - m_Neighbors: 0100000001000000010000000100000001000000010000000100000002000000
+    m_Sprites:
+    - {fileID: 21300000, guid: 864e463077387404486aadc6e2bdbf7d, type: 3}
+    m_GameObject: {fileID: 0}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_RuleTransform: 0
+    m_Output: 0
+    m_ColliderType: 1
+    m_RandomTransform: 0
+  - m_Neighbors: 0100000001000000020000000100000001000000010000000100000001000000
+    m_Sprites:
+    - {fileID: 21300000, guid: b3aa592a31074f94caaf3c323addab8c, type: 3}
+    m_GameObject: {fileID: 0}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_RuleTransform: 0
+    m_Output: 0
+    m_ColliderType: 1
+    m_RandomTransform: 0
+  - m_Neighbors: 0100000001000000010000000100000001000000020000000100000001000000
+    m_Sprites:
+    - {fileID: 21300000, guid: 0f37095a9b3eaea48977b8e6b19f6cc5, type: 3}
+    m_GameObject: {fileID: 0}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_RuleTransform: 0
+    m_Output: 0
+    m_ColliderType: 1
+    m_RandomTransform: 0
+  - m_Neighbors: 0200000001000000010000000100000001000000010000000100000001000000
+    m_Sprites:
+    - {fileID: 21300000, guid: 937fb86f17772b2488830d9bfc79c838, type: 3}
     m_GameObject: {fileID: 0}
     m_AnimationSpeed: 1
     m_PerlinScale: 0.5
