@@ -38,8 +38,8 @@ public class SManager : MonoBehaviour
         {
             instance = this;
         }
-        //player = Resources.Load<GameObject>("GameManagerRes/player 1");
-        player = ResourceManager.GetInstance().getGameObject("GameManagerRes/player 1");
+        //player = Resources.Load<GameObject>("GameManagerRes/player");
+        player = ResourceManager.GetInstance().getGameObject("GameManagerRes/player");
         if (player == null)
             Debug.Log("dont find player object");
     }
@@ -254,7 +254,7 @@ public class SManager : MonoBehaviour
         if (gamePlayer != null)
         {
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().isDead = true;
-            Destroy(gamePlayer, 2.0f);
+            Destroy(gamePlayer, 1.67f);
             StartCoroutine(createNewPlayerInBirthPlaceAfterDeath());
         }
 

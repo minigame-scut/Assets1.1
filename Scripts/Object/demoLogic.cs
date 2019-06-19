@@ -16,7 +16,7 @@ public class demoLogic : MonoBehaviour
     void Update()
     {
         if (gamePlayer == null)
-            gamePlayer = GameObject.Find("player 1(Clone)");
+            gamePlayer = GameObject.Find("player(Clone)");
     }
     void responseForHELLODEMO(Vector3 pos)
     {
