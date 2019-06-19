@@ -183,10 +183,10 @@ MonoBehaviour:
   isWalk: 0
   isJump: 0
   isGround: 1
+  isDrop: 0
   curJumpSpeed: 0
   curRushSpeed: 0
-  shadowr: {fileID: 1507537604408894481, guid: d0c984e39447cb543bf764dbac540bb1, type: 3}
-  shadowl: {fileID: 8755235893882702261, guid: 57458500e9c3fcd40b4076cc853737c1, type: 3}
+  shadow: {fileID: 1507537604408894481, guid: d0c984e39447cb543bf764dbac540bb1, type: 3}
   inputTimer: 0
   isPause: 0
   elasticTrans: {fileID: 0}

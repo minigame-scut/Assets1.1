@@ -8,9 +8,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-   // public string testBirthPlace;
-
+    // public string testBirthPlace;
+    public int MapIndex = 0;
     public int MapIndexNum = 0;
+   
     public static GameManager instance;
 
     Dictionary<string, string> mapData;
@@ -109,7 +110,7 @@ public class GameManager : MonoBehaviour
 
         //创建当前场景的sceneManager
         if (sceneName != "Interface")
-            buildSceneManager(GameObject.Find("birthPlace1-" + MapIndexNum + "-1").transform.position);
+            buildSceneManager(GameObject.Find("birthPlace" + MapIndex + "-" + MapIndexNum + "-1").transform.position);
         //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
 
