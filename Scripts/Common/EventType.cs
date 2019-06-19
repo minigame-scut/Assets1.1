@@ -9,6 +9,7 @@
     TRANSDOOR,       //传送门  传送本地图内
     TRANSDOORTOWORLD,  //传送门  传送到不同的地图
     UPSPEEDDOOR,     //加速门
+    FLOWDOOR,        //吹风门
     INITDOOR,        //重置门
     LEVELDOOR,       //关卡门
     COLORTRANSDOOR,  //门颜色转换
