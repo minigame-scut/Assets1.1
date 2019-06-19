@@ -12,8 +12,7 @@ public class PlayerPlatformController : PhysicalObject
     //当前冲刺速度
     public float curRushSpeed;
     //阴影对象
-    public GameObject shadowr;
-    public GameObject shadowl;
+    public GameObject shadow;
     //输入计时器，用于防止出生动画未播完玩家就开始进行操作
     public float inputTimer = 0;
     //是否暂停
@@ -52,10 +51,10 @@ public class PlayerPlatformController : PhysicalObject
         //是否暂停
         if (isPause)
             return;
-
+        
         angleX = (playerData.gravityTrans == -1) ? 180 : 0;
         angleY = (playerData.dir == 1) ? 0 : 180;
-             
+
         //输入计时器计时
         if (inputTimer <= 1.2f)
         {
@@ -67,6 +66,19 @@ public class PlayerPlatformController : PhysicalObject
         {
             Dead();
             return;
+        }
+        //判断是否在下坠
+        if (velocity.y * playerData.gravityTrans < 0)
+        {
+            isDrop = true;
+        }
+        else
+        {
+            isDrop = false; 
+        }
+        if(isGround)
+        {
+            isDrop = false;
         }
         //是否重力翻转
         if (playerData.buff.contains(Buff.GRAVITY))
@@ -183,14 +195,23 @@ public class PlayerPlatformController : PhysicalObject
         {
             anim.SetBool("isJump", false);
         }
-        if(isRush)
+        if (isDrop)
         {
-            anim.SetBool("isDash", true);
+            anim.SetBool("isDrop", true);
+        }
+        else
+        {
+            anim.SetBool("isDrop", false);
+        }
+        if (isRush)
+        {
+            anim.SetBool("isRush", true);
         }
         else if(!isRush)
         {
-            anim.SetBool("isDash", false);
+            anim.SetBool("isRush", false);
         }
+        
     }
     //得到玩家的数据
     public PlayerData getPlayerData()
@@ -275,10 +296,7 @@ public class PlayerPlatformController : PhysicalObject
     //生成阴影
     void createShdow()
     {
-        if (playerData.dir == 1)
-            Instantiate<GameObject>(shadowr, transform.position, transform.rotation);
-        else if (playerData.dir == -1)
-            Instantiate<GameObject>(shadowl, transform.position, transform.rotation);
+        Instantiate<GameObject>(shadow, transform.position, transform.rotation);
     }
     //反重力
     void gravityContrary()

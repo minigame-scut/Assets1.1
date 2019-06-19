@@ -18,6 +18,8 @@ public class PhysicalObject : MonoBehaviour
     public bool isJump = false;
     //是否在空中
     public bool isGround = true;
+    //是否下坠
+    public bool isDrop = false;
 
     protected Vector2 targetVelocity;
 

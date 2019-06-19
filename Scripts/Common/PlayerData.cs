@@ -45,7 +45,6 @@
     //笑脸数目
     public int numOfFace = 0;
 
-
     public void setPlayerVector3DPositionData(double x,double y, double z)
     {
         this.x = (float)x;
