@@ -49,6 +49,7 @@ public class SceneMapData
             mapData.Add("nextPlace1-4-2", "birthPlace1-5-1");
             mapData.Add("nextPlace1-6-2", "birthPlace1-8-1");
 
+
         //传送门映射
         mapData.Add("transDoor1-1-1-1", "transDoor1-1-1-2");
         mapData.Add("transDoor1-1-1-2", "transDoor1-1-1-1");
@@ -75,6 +76,15 @@ public class SceneMapData
         mapData.Add("map1-6", "7");
         mapData.Add("map1-7", "8");
         mapData.Add("map1-8", "9");
+        mapData.Add("map2-1", "10");
+        mapData.Add("map2-2", "11");
+        mapData.Add("map2-3", "12");
+        mapData.Add("map2-4", "13");
+        mapData.Add("map2-5", "14");
+        mapData.Add("map2-6", "15");
+
+
+
         //}
         //else
         //{

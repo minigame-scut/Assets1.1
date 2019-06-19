@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         if (player == null)
-            player = GameObject.Find("player(Clone)");
+            player = GameObject.Find("player 1(Clone)");
 
         if (player != null)
             FixCameraPos();

@@ -195,14 +195,6 @@ public class PlayerPlatformController : PhysicalObject
         {
             anim.SetBool("isJump", false);
         }
-        if (isDrop)
-        {
-            anim.SetBool("isDrop", true);
-        }
-        else
-        {
-            anim.SetBool("isDrop", false);
-        }
         if (isRush)
         {
             anim.SetBool("isRush", true);
