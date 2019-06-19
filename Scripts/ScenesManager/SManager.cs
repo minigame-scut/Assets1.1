@@ -118,7 +118,7 @@ public class SManager : MonoBehaviour
     public void birthPlayer()
     {
         //如果找到玩家物体，则销毁当前玩家物体
-        if (GameObject.Find("player 1(clone)"))
+        if (GameObject.Find("player 1(Clone)"))
         {
             Destroy(GameObject.Find("player 1(Clone)"));
             //return;
