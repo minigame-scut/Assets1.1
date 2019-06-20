@@ -15,12 +15,11 @@ public class Parallax : MonoBehaviour
 
     void Awake()
     {
-        //cam = Camera.main.transform;
+        cam = Camera.main.transform;
     }
     // Start is called before the first frame update
     void Start()
     {
-        cam = GameObject.Find("Main Camera").transform;
         previousCamPos = cam.position;
     }
 

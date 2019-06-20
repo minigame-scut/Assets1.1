@@ -39,7 +39,7 @@ public class SManager : MonoBehaviour
             instance = this;
         }
         //player = Resources.Load<GameObject>("GameManagerRes/player");
-        player = ResourceManager.GetInstance().getGameObject("GameManagerRes/player 1");
+        player = ResourceManager.GetInstance().getGameObject("GameManagerRes/player");
         if (player == null)
             Debug.Log("dont find player object");
     }
@@ -118,9 +118,9 @@ public class SManager : MonoBehaviour
     public void birthPlayer()
     {
         //如果找到玩家物体，则销毁当前玩家物体
-        if (GameObject.Find("player 1(Clone)"))
+        if (GameObject.Find("player(Clone)"))
         {
-            Destroy(GameObject.Find("player 1(Clone)"));
+            Destroy(GameObject.Find("player(Clone)"));
             //return;
         }
         //加载player预制体，在出生位置创建玩家

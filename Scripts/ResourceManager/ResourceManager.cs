@@ -13,7 +13,6 @@ public class ResourceManager : MonoBehaviour
 
     public Dictionary<string, AudioClip> musicDictionary;
     public Dictionary<string, GameObject> gameObjectDictionary;
-    public Dictionary<string, Material> MaterialDictionary;
     public static ResourceManager GetInstance()
     {
             return instance;
@@ -36,7 +35,6 @@ public class ResourceManager : MonoBehaviour
         }
         musicDictionary = new Dictionary<string, AudioClip>();
         gameObjectDictionary = new Dictionary<string, GameObject>();
-        MaterialDictionary = new Dictionary<string, Material>();
         init();
     }
 
@@ -63,12 +61,9 @@ public class ResourceManager : MonoBehaviour
         musicDictionary.Add("Music/Sounds/InOutWorldDoor", Resources.Load<AudioClip>("Music/Sounds/InOutWorldDoor"));
         musicDictionary.Add("Music/Sounds/LevelDoor", Resources.Load<AudioClip>("Music/Sounds/LevelDoor"));
         musicDictionary.Add("Music/Sounds/GetProp", Resources.Load<AudioClip>("Music/Sounds/GetProp"));
-        gameObjectDictionary.Add("GameManagerRes/player 1", Resources.Load<GameObject>("GameManagerRes/player 1"));
+        gameObjectDictionary.Add("GameManagerRes/player", Resources.Load<GameObject>("GameManagerRes/player"));
         gameObjectDictionary.Add("GameManagerRes/AudioManager", Resources.Load<GameObject>("GameManagerRes/AudioManager"));
         gameObjectDictionary.Add("GameManagerRes/UI", Resources.Load<GameObject>("GameManagerRes/UI"));
-        gameObjectDictionary.Add("GameManagerRes/bat24", Resources.Load<GameObject>("GameManagerRes/bat24"));
-
-        MaterialDictionary.Add("Materials/lightM", Resources.Load<Material>("Materials/lightM"));
     }
     public AudioClip getClip(string name)
     {
@@ -80,13 +75,6 @@ public class ResourceManager : MonoBehaviour
     {
         if (gameObjectDictionary.ContainsKey(name))
             return gameObjectDictionary[name];
-        return null;
-    }
-
-    public Material getMaterial(string name)
-    {
-        if (MaterialDictionary.ContainsKey(name))
-            return MaterialDictionary[name];
         return null;
     }
 }

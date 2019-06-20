@@ -73,7 +73,8 @@ public class PhysicalObject : MonoBehaviour
     {
         //Physics2D.gravity = (0,-9.8f)  模拟重力加速
         //if(velocity.y <= 5.0f)
-        velocity += gravityModifier * Physics2D.gravity * Time.deltaTime * playerData.gravityTrans;
+        //if(velocity.y <= 10.0f && velocity.y >= -10.0f)
+            velocity += gravityModifier * Physics2D.gravity * Time.fixedDeltaTime * playerData.gravityTrans;
         //赋予移动方向
         velocity.x = targetVelocity.x;
         isGround = false;
@@ -130,8 +131,6 @@ public class PhysicalObject : MonoBehaviour
             }
             for (int i = 0; i < hitBufferList.Count; i++)
             {
-                //Debug.Log(i);
-                //Debug.Log(hitBufferList[i].point);
                 //碰到的表面的法向量
                 Vector2 currentNormal = hitBufferList[i].normal;
 

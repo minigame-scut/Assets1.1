@@ -20,8 +20,10 @@ public class PlayerPlatformController : PhysicalObject
     //受到弹力方向
     public Transform elasticTrans;
     //旋转角
-    float angleX;
-    float angleY;
+    //float angleX;
+    //float angleY;
+    //精灵
+    public SpriteRenderer spriteRenderer;
 
     Vector2 move;
     
@@ -40,20 +42,25 @@ public class PlayerPlatformController : PhysicalObject
             StartCoroutine(setBirthAnimAsFalse());
         }
 
-        angleX = (playerData.gravityTrans == -1) ? 180 : 0;
-        angleY = (playerData.dir == 1) ? 0 : 180;
+        //angleX = (playerData.gravityTrans == -1) ? 180 : 0;
+        //angleY = (playerData.dir == 1) ? 0 : 180;
         
-        this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
+        //this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     //重写PhysicalObject中计算玩家速度的函数
     protected override void playerControl()
     {
+        Debug.Log(velocity.y);
         //是否暂停
         if (isPause)
             return;
         
-        angleX = (playerData.gravityTrans == -1) ? 180 : 0;
-        angleY = (playerData.dir == 1) ? 0 : 180;
+        //angleX = (playerData.gravityTrans == -1) ? 180 : 0;
+        //angleY = (playerData.dir == 1) ? 0 : 180;
+
+        spriteRenderer.flipX = (playerData.dir == 1) ? false : true;
+        spriteRenderer.flipY = (playerData.gravityTrans == -1) ? true : false;
 
         //输入计时器计时
         if (inputTimer <= 1.2f)
@@ -167,7 +174,6 @@ public class PlayerPlatformController : PhysicalObject
             playerData.elasticTimer += Time.fixedDeltaTime;
             if (playerData.elasticTimer < 0.3f)
             {
-                Debug.Log("I have ealstic");
                 elasticUp();
             }
             else
@@ -194,6 +200,14 @@ public class PlayerPlatformController : PhysicalObject
         else if(!isJump)
         {
             anim.SetBool("isJump", false);
+        }
+        if (isDrop)
+        {
+            anim.SetBool("isDrop", true);
+        }
+        else
+        {
+            anim.SetBool("isDrop", false);
         }
         if (isRush)
         {
@@ -229,7 +243,7 @@ public class PlayerPlatformController : PhysicalObject
     void run(int direction)
     {
         playerData.dir = direction;
-        this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
+        //this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
         move.x = playerData.dir;
         isWalk = true;
     }
@@ -293,7 +307,7 @@ public class PlayerPlatformController : PhysicalObject
     //反重力
     void gravityContrary()
     {
-        this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
+        //this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
         playerData.gravityTrans *= -1;
         velocity.y = 0;
     }
