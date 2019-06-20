@@ -26,8 +26,9 @@ public class batLogic24 : MonoBehaviour
 
 
     //蝙蝠只在玩家的面前移动，移动的长宽
-    float width = 10f;
-    float height = 3f;
+
+    //float width = 10f;
+    //float height = 3f;
 
     //只记录死亡一次
    // bool isD = false;
