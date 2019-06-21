@@ -81,7 +81,7 @@ public class MapLogic24 : MonoBehaviour
             deathCount = 0;
             lastCount = 0;
         }
-        player = GameObject.Find("player 1(Clone)");
+        player = GameObject.FindWithTag("player");
         if (player == null)
         { //没找到玩家 禁用光照
             playerLight.SetActive(false);

@@ -12,7 +12,7 @@ public class Chainball : MonoBehaviour
     float speedRate = 10;
     float angle = 0;
     //围绕点距离中心多远
-     float dis = 1.5f;
+
     float limitAngle = 62f;
     // Start is called before the first frame update
     void Start()

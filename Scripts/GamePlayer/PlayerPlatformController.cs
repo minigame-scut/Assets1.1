@@ -51,7 +51,7 @@ public class PlayerPlatformController : PhysicalObject
     //重写PhysicalObject中计算玩家速度的函数
     protected override void playerControl()
     {
-        Debug.Log(velocity.y);
+       // Debug.Log(velocity.y);
         //是否暂停
         if (isPause)
             return;

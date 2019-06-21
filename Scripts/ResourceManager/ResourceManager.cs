@@ -66,6 +66,7 @@ public class ResourceManager : MonoBehaviour
         gameObjectDictionary.Add("GameManagerRes/player", Resources.Load<GameObject>("GameManagerRes/player"));
         gameObjectDictionary.Add("GameManagerRes/AudioManager", Resources.Load<GameObject>("GameManagerRes/AudioManager"));
         gameObjectDictionary.Add("GameManagerRes/UI", Resources.Load<GameObject>("GameManagerRes/UI"));
+        gameObjectDictionary.Add("GameManagerRes/bat24", Resources.Load<GameObject>("GameManagerRes/bat24"));
         materialDictionary.Add("Materials/lightM", Resources.Load<Material>("Materials/lightM"));
     }
     public AudioClip getClip(string name)

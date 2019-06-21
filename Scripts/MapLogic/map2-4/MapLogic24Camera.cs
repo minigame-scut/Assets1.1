@@ -41,7 +41,7 @@ public class MapLogic24Camera : MonoBehaviour
     void Update()
     {
         if (player == null)
-            player = GameObject.Find("player 1(Clone)");
+            player = GameObject.FindWithTag("player");
 
         if (player != null)
             FixCameraPos();
