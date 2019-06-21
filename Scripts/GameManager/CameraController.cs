@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
         cameraHeight = sizeOfCamera  ;
         cameraWidth= sizeOfCamera   * ((float)Screen.width / Screen.height);
     }
-    void Update()
+    void FixedUpdate()
     {
         if (player == null)
             player = GameObject.Find("player(Clone)");
@@ -48,20 +48,7 @@ public class CameraController : MonoBehaviour
 
     void FixCameraPos()
     {
-
-        //Debug.Log(player.transform.position.x+""+player.transform.position.y);
-        if(GameManager.instance.BattleIndexNum == 2 && GameManager.instance.MapIndexNum == 3)
-        {
-            targetPos = new Vector3(player.transform.position.x, player.transform.position.y-2, gameObject.transform.position.z);
-        }
-        else if(GameManager.instance.BattleIndexNum == 2 && GameManager.instance.MapIndexNum == 6)
-        {
-            targetPos = new Vector3(player.transform.position.x, player.transform.position.y+1, gameObject.transform.position.z);
-        }
-        else
-        {
-            targetPos = new Vector3(player.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
-        }
+        targetPos = new Vector3(player.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
 
         if (player.transform.position.x - cameraWidth <= -scrWidth / 2 )
             targetPos.x =-scrWidth /2 +cameraWidth;
@@ -71,17 +58,20 @@ public class CameraController : MonoBehaviour
             targetPos.y = -scrHeight/2 + cameraHeight;
         else if (player.transform.position.y + cameraHeight >= scrHeight / 2)
             targetPos.y = scrHeight/2 - cameraHeight;
-        
-        if(GameManager.instance.BattleIndexNum == 2 && GameManager.instance.MapIndexNum == 3)
+
+        //插值顺滑
+        if (GameManager.instance.sceneName == "map2-3")
         {
-            transform.position = targetPos;
+            transform.position = Vector3.Lerp(transform.position, targetPos + new Vector3(0, -2.0f, 0), Time.deltaTime * speed);
+        }
+        else if (GameManager.instance.sceneName == "map2-6")
+        {
+            transform.position = Vector3.Lerp(transform.position, targetPos + new Vector3(0, 1, 0), Time.deltaTime * speed);
         }
         else
         {
-            //插值顺滑
             transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * speed);
         }
-            
     }
 
 }

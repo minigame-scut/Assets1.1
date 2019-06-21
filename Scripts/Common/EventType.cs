@@ -10,6 +10,7 @@
     TRANSDOORTOWORLD,  //传送门  传送到不同的地图
     UPSPEEDDOOR,     //加速门
     INITDOOR,        //重置门
+    BLOWDOOR,        //吹风门
     LEVELDOOR,       //关卡门
     COLORTRANSDOOR,  //门颜色转换
     //玩家信号
@@ -23,6 +24,7 @@
     ELASTICDELETE,   //弹力buff消除
     INITJUMPDELETE,  //重置跳buff消除
     INITRUSHDELETE,  //重置冲刺buff消除
+    BLOWDELETE,      //风力buff消除
     NEXTMAP,        //玩家进入下一大关卡
     //道具信号
     DESTROY,          //道具销毁
@@ -31,6 +33,7 @@
     CONTINUEGAME,     //继续游戏
     PLAYERPAUSE,       //玩家暂停
     HELLODEMO,       //进入demo
+    ENABLEBAT,       //启用蝙蝠
     //游戏
     ANIMPAUSE,       //顿帧
     SHAKESCREEN,     //震动

@@ -22,12 +22,15 @@ public class Bat : MonoBehaviour
     private float rushTime;
     //冲刺计时器
     private float rushTimer;
+
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         trans = 1;
         timer = 0f;
         rushTime = 0f;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -68,19 +71,19 @@ public class Bat : MonoBehaviour
     {
         if (isSuspension)
         {
-            //anim.SetBool("isSuspension", true);
+            anim.SetBool("isSuspension", true);
         }
         else
         {
-            //anim.SetBool("isSuspension", false);
+            anim.SetBool("isSuspension", false);
         }
         if (isRush)
         {
-            //anim.SetBool("isRush", true);
+            anim.SetBool("isRush", true);
         }
         else
         {
-            //anim.SetBool("isRush", false);
+            anim.SetBool("isRush", false);
         }
     }
     void setTrans()
@@ -97,6 +100,13 @@ public class Bat : MonoBehaviour
     void getPlayerPos()
     {
         playerPos = GameObject.Find("player(Clone)").transform.position;
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.transform.tag=="player")
+        {
+            EventCenter.Broadcast(MyEventType.DEATH);
+        }
     }
 
 }

@@ -45,4 +45,8 @@ public class magma : MonoBehaviour
         this.transform.position = initPos;
         isUp = true;
     }
+    void OnDestroy()
+    {
+        EventCenter.RemoveListenter(MyEventType.DEATH, responseForDEATH);
+    }
 }
