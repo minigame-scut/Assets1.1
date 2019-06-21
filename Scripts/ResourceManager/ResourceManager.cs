@@ -64,6 +64,7 @@ public class ResourceManager : MonoBehaviour
         musicDictionary.Add("Music/Sounds/LevelDoor", Resources.Load<AudioClip>("Music/Sounds/LevelDoor"));
         musicDictionary.Add("Music/Sounds/GetProp", Resources.Load<AudioClip>("Music/Sounds/GetProp"));
         gameObjectDictionary.Add("GameManagerRes/player", Resources.Load<GameObject>("GameManagerRes/player"));
+        gameObjectDictionary.Add("GameManagerRes/bat", Resources.Load<GameObject>("GameManagerRes/bat"));
         gameObjectDictionary.Add("GameManagerRes/AudioManager", Resources.Load<GameObject>("GameManagerRes/AudioManager"));
         gameObjectDictionary.Add("GameManagerRes/UI", Resources.Load<GameObject>("GameManagerRes/UI"));
         gameObjectDictionary.Add("GameManagerRes/bat24", Resources.Load<GameObject>("GameManagerRes/bat24"));

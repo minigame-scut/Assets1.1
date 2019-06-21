@@ -236,6 +236,14 @@ public class SManager : MonoBehaviour
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.add(Buff.INITJUMP);																						
         }
     }
+    private void responseForBLOWDOOR(Transform blowTrans)
+    {
+        if(gamePlayer != null)
+        {
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.add(Buff.BLOW);
+            gamePlayer.GetComponent<PlayerPlatformController>().blowTrans = blowTrans;
+        } 
+    }
     private void responseForWALK()
     {
 
@@ -302,7 +310,6 @@ public class SManager : MonoBehaviour
         {
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.SUPERRUSH);
         }
-
     }
     private void responseForELASTICDELETE()
     {
@@ -328,6 +335,14 @@ public class SManager : MonoBehaviour
         if (gamePlayer != null)
         {
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.INITRUSH);
+        }
+    }
+    private void responseForBLOWDELETE()
+    {
+        //接受到BLOWDELETE信号后移除该buff
+        if(gamePlayer != null)
+        {
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.BLOW);
         }
     }
     private void responseForDESTROY(GameObject other)
@@ -382,6 +397,7 @@ public class SManager : MonoBehaviour
         EventCenter.AddListener<Vector3, string>(MyEventType.TRANSDOOR, responseForTRANSDOOR);
         EventCenter.AddListener(MyEventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
         EventCenter.AddListener(MyEventType.INITDOOR, responseForINITDOOR);
+        EventCenter.AddListener<Transform>(MyEventType.BLOWDOOR, responseForBLOWDOOR);
         EventCenter.AddListener(MyEventType.LEVELDOOR, responseForLEVELDOOR);
         //监听玩家信号
         EventCenter.AddListener(MyEventType.WALK, responseForWALK);
@@ -390,8 +406,9 @@ public class SManager : MonoBehaviour
         EventCenter.AddListener(MyEventType.RUSH, responseForRUSH);
         EventCenter.AddListener(MyEventType.ELASTICDELETE, responseForELASTICDELETE);
         EventCenter.AddListener(MyEventType.REBIRTH, responseForREBIRTH);
-         EventCenter.AddListener(MyEventType.INITJUMPDELETE, responseForINITJUMPDELETE);
+        EventCenter.AddListener(MyEventType.INITJUMPDELETE, responseForINITJUMPDELETE);
         EventCenter.AddListener(MyEventType.INITRUSHDELETE, responseForINITRUSHDELETE);
+        EventCenter.AddListener(MyEventType.BLOWDELETE, responseForBLOWDELETE);
         //
         EventCenter.AddListener<GameObject>(MyEventType.DESTROY, responseForDESTROY);
     }

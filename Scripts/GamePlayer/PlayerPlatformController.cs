@@ -19,6 +19,8 @@ public class PlayerPlatformController : PhysicalObject
     public bool isPause = false;
     //受到弹力方向
     public Transform elasticTrans;
+    //受到风力方向
+    public Transform blowTrans;
     //旋转角
     //float angleX;
     //float angleY;
@@ -51,7 +53,6 @@ public class PlayerPlatformController : PhysicalObject
     //重写PhysicalObject中计算玩家速度的函数
     protected override void playerControl()
     {
-       // Debug.Log(velocity.y);
         //是否暂停
         if (isPause)
             return;
@@ -180,6 +181,11 @@ public class PlayerPlatformController : PhysicalObject
             {
                 EventCenter.Broadcast(MyEventType.ELASTICDELETE);
             }
+        }
+        //判断玩家当前是否持有风力buff
+        if(playerData.buff.contains(Buff.BLOW))
+        {
+            blow();
         }
         targetVelocity = move * playerData.maxSpeed;
     }
@@ -315,7 +321,15 @@ public class PlayerPlatformController : PhysicalObject
     void elasticUp()
     {
         velocity.y = elasticTrans.right.y * 4.4f;
-        velocity.x = elasticTrans.right.x * 4.4f;
+        move.x += elasticTrans.right.x * 4.4f;
+        //velocity.x = elasticTrans.right.x * 4.4f;
+    }
+    //风吹效果
+    void blow()
+    {
+        velocity.y = blowTrans.right.y * -8.0f;
+        //targetVelocity.x = blowTrans.right.x * 10.0f;
+        move.x += blowTrans.right.x * 6.0f;
     }
     //玩家死亡
     void Dead()
