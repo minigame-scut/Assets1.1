@@ -96,7 +96,7 @@ public class batLogic24 : MonoBehaviour
                    //反向移动
 
                     pos.z = 0;
-                        transform.Translate(-pos * Time.deltaTime * speed * 15);
+                        transform.Translate(-pos * Time.deltaTime * speed * 25);
                 }
             }
           else
