@@ -10,25 +10,38 @@ public class BossHP : MonoBehaviour
 
     private int hurtCD;
     private GameObject Boss;
+    private int hp;
     // Start is called before the first frame update
     void Start()
     {
         Boss = transform.parent.gameObject;
         hurtCD = 0;
+        hp = HP;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (HP < 0)
-            Boss.SetActive(false);
+        {
+            Boss.transform.Find("BossBody").gameObject.SetActive(false);
+            if(!Boss.transform.Find("Particle System").GetComponent<ParticleSystem>().isPlaying)
+                Boss.transform.Find("Particle System").GetComponent<ParticleSystem>().Play();
+            dieBoss();
+            GameObject.Find("KeyPoints").transform.Find("nextPlace2-5-2").gameObject.SetActive(true);
+        }
+            
         if (hurtCD < 60)
             hurtCD++;
         if (GameObject.Find("player 1(Clone)") == null)
         {
-            HP = 3;
+            HP = hp;
             if(!Boss.activeSelf)
+            {
                 Boss.SetActive(true);
+                Boss.transform.Find("BossBody").gameObject.SetActive(true);
+            }
+
         }
 
     }
@@ -47,7 +60,19 @@ public class BossHP : MonoBehaviour
     }
     void setHurtFalse()
     {
+        if (transform.parent.gameObject.GetComponentInChildren<Animator>() == null)
+            return;
         transform.parent.gameObject.GetComponentInChildren<Animator>().SetBool("hurt", false);
         Invoke("setHurtFalse", 0.66f);
+    }
+
+    void dieBoss()
+    {
+        StartCoroutine(dieBossIE());
+    }
+    IEnumerator dieBossIE()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Boss.SetActive(false);
     }
 }

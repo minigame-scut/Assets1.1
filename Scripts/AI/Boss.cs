@@ -19,21 +19,31 @@ public class Boss : MonoBehaviour
 
     [Header("冲刺间隔")]
     public float runCD = 0;
-    private float timer;
+    private float runTimer;
+
+    [Header("攻击残影")]
+    public GameObject shadow;
+    public float shadowCD = 10;
+    private float shadowTimer;
 
     [Header("出生点")]
     public GameObject bp;
 
+    //玩家信息
     private GameObject player;
     private Vector3 playerPos;
 
+    //移动方向
     private int dir;
+    //当前Boss状态
     private BossState bossState;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("player 1(Clone)");
-        timer = 0;
+        runTimer = 0;
+        shadowTimer = 0;
         dir = -1;
         bossState = BossState.walk;
     }
@@ -49,18 +59,19 @@ public class Boss : MonoBehaviour
             case BossState.walk:
                 {
                     Walk();
-                    timer++;
-                    if (timer > runCD)
+                    runTimer++;
+                    if (runTimer > runCD)
                     {
                         bossState = BossState.attack;
                         lookAtPlayer();
-                        timer = 0;
+                        runTimer = 0;
                     }
                     break;
                 }
             case BossState.attack:
                 {
                     Attack();
+                    CreateAttackShadow();
                     break;
                 }
             case BossState.back:
@@ -91,6 +102,8 @@ public class Boss : MonoBehaviour
 
     void Attack()
     {
+        if (gameObject.GetComponentInChildren<Animator>() == null)
+            return;
         gameObject.GetComponentInChildren<Animator>().SetBool("attack", true);
         transform.Translate(Vector3.Normalize(playerPos - transform.position)*runSpeed*Time.deltaTime,Space.World);
         if( Vector3.Distance(transform.position,playerPos) <= 0.5f)
@@ -98,6 +111,13 @@ public class Boss : MonoBehaviour
             bossState = BossState.back;
             gameObject.GetComponentInChildren<Animator>().SetBool("attack", false);
         }
+    }
+
+    void CreateAttackShadow()
+    {
+        if (shadowTimer % shadowCD == 0)
+            Instantiate<GameObject>(shadow, transform.position, transform.rotation);
+        shadowTimer++;
     }
 
     void Back()
