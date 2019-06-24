@@ -48,7 +48,6 @@ public class SceneMapData
             mapData.Add("nextPlace1-6-1", "birthPlace1-3-2");
             mapData.Add("nextPlace1-4-2", "birthPlace1-5-1");
             mapData.Add("nextPlace1-6-2", "birthPlace2-0-1");
-            mapData.Add("nextPlace1-6-2", "birthPlace2-0-1");
             mapData.Add("nextPlace2-0-1", "birthPlace2-1-1");
             mapData.Add("nextPlace2-1-1", "birthPlace2-2-1");
             mapData.Add("nextPlace2-2-1", "birthPlace2-3-1");
