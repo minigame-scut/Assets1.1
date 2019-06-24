@@ -47,8 +47,8 @@ public class SManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        key = GameObject.Find("Key");
-        face = GameObject.Find("Face");
+        key = GameObject.FindWithTag("collection_key");
+        face = GameObject.FindWithTag("collection");
         init();
         birthPlayer();
         listener();
