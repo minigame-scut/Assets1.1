@@ -33,7 +33,7 @@ public class BossHP : MonoBehaviour
             
         if (hurtCD < 60)
             hurtCD++;
-        if (GameObject.Find("player 1(Clone)") == null)
+        if (GameObject.FindWithTag("player") == null)
         {
             HP = hp;
             if(!Boss.activeSelf)

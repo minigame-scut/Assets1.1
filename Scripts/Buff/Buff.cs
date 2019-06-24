@@ -10,5 +10,6 @@ public enum Buff
     ELASTIC,    //弹力
     INITJUMP,   //重置跳
     INITRUSH,    //重置冲
-    BLOW,        
+    BLOW       //吹风    
+
 }

@@ -41,7 +41,7 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("player 1(Clone)");
+        player = GameObject.FindWithTag("player");
         runTimer = 0;
         shadowTimer = 0;
         dir = -1;
@@ -86,7 +86,7 @@ public class Boss : MonoBehaviour
     {
         if(!player)
         {
-            player = GameObject.Find("player 1(Clone)");
+            player = GameObject.FindWithTag("player");
         }
         return player;
     }
@@ -144,6 +144,5 @@ public class Boss : MonoBehaviour
         {
             dir *= -1;
         }
-
     }
 }
