@@ -11,4 +11,5 @@ public enum Buff
     INITJUMP,   //重置跳
     INITRUSH,    //重置冲
     BLOW       //吹风    
+
 }
