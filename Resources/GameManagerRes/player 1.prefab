@@ -190,3 +190,5 @@ MonoBehaviour:
   inputTimer: 0
   isPause: 0
   elasticTrans: {fileID: 0}
+  blowTrans: {fileID: 0}
+  spriteRenderer: {fileID: 0}

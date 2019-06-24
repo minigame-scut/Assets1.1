@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shadow : MonoBehaviour
 {
-    public int CD = 10;
+    public int CD = 100;
 
     private int timer;
     private SpriteRenderer sr;

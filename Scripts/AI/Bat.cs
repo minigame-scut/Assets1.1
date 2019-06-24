@@ -99,7 +99,7 @@ public class Bat : MonoBehaviour
     }
     void getPlayerPos()
     {
-        playerPos = GameObject.Find("player 1(Clone)").transform.position;
+        playerPos = GameObject.FindWithTag("player").transform.position;
     }
     void OnTriggerEnter2D(Collider2D other)
     {

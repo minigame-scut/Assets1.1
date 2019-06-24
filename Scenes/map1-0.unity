@@ -334,6 +334,11 @@ PrefabInstance:
       propertyPath: testBirthPlace
       value: birthPlace1-0-1
       objectReference: {fileID: 0}
+    - target: {fileID: 2229006851139430890, guid: f00fb72e51530bb4dab093d9394684be,
+        type: 3}
+      propertyPath: BattleIndexNum
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f00fb72e51530bb4dab093d9394684be, type: 3}
 --- !u!1001 &520890470
@@ -479,6 +484,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8863848dd7c9a9249918c8d056b33064, type: 3}
+--- !u!20 &683257740 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8824092100851168215, guid: 8863848dd7c9a9249918c8d056b33064,
+    type: 3}
+  m_PrefabInstance: {fileID: 654743786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &714908517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1689,8 +1700,8 @@ Canvas:
   m_GameObject: {fileID: 2123600509}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 683257740}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

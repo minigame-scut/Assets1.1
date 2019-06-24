@@ -15,7 +15,7 @@ public class CreateShadow : MonoBehaviour
     {
         //if (timer > 100)
         //    return;
-        if (timer % 5 == 0)
+        if (timer % 50 == 0)
         {
             Instantiate<GameObject>(shdow, transform.position, transform.rotation);
         }

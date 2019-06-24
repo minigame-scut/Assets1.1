@@ -9,5 +9,6 @@ public enum Buff
     GRAVITY,    //重力
     ELASTIC,    //弹力
     INITJUMP,   //重置跳
-    INITRUSH    //重置冲
+    INITRUSH,    //重置冲
+    BLOW       //吹风    
 }

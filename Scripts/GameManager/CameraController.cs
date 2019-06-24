@@ -6,7 +6,7 @@ using System;
 public class CameraController : MonoBehaviour
 {
     public GameObject player;  //主角
-    private float speed = 5f;  //相机跟随速度
+    private float speed = 10f;  //相机跟随速度
 
     //设定一个角色能看到的最远值
     public float Ahead = 1;
