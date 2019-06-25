@@ -14,7 +14,7 @@ public class MapLogic22 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initPos = new Vector3(4.0f, 10.0f);
+        initPos = new Vector3(0, 12.0f);
         bat = GameObject.Instantiate(batPrefab, initPos, Quaternion.identity);
         listener();
     }

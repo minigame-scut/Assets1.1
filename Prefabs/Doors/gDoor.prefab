@@ -220,51 +220,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7382189107279705143}
     m_Modifications:
-    - target: {fileID: 7866583553593824812, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
-        type: 3}
-      propertyPath: m_Name
-      value: gravityEffect
-      objectReference: {fileID: 0}
-    - target: {fileID: 7866583553593824813, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7866583553593824814, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7866583553593824814, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
-        type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7866583553593824814, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
-        type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7866583553593824814, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
-        type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7866583553593824814, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
-        type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7866583553593824814, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
-        type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7866583553593824814, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
-        type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7866583553593824815, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -319,6 +274,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866583553593824812, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
+        type: 3}
+      propertyPath: m_Name
+      value: gravityEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866583553593824813, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6beb8e42dfb5b4b4eb36417d3f6b6eb7, type: 3}

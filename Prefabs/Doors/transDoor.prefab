@@ -234,11 +234,6 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4366676860294795186, guid: 5ce9d5aadb8c31f42a230a75bdebdbfd,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce9d5aadb8c31f42a230a75bdebdbfd, type: 3}
 --- !u!4 &3109422032411034087 stripped
@@ -333,11 +328,6 @@ PrefabInstance:
         type: 3}
       propertyPath: looping
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205348415912827198, guid: 461688ef886a86b43b082cf71625fcda,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7205348415912827199, guid: 461688ef886a86b43b082cf71625fcda,
         type: 3}

@@ -296,19 +296,18 @@ public class GameManager : MonoBehaviour
 
     IEnumerator waitForFindForTransDoor()
     {
-
         yield return new WaitForSeconds(1);
         Transform toTransPosition = GameObject.Find(toTrans).transform;
         GameObject effect = toTransPosition.Find("transInEffect").gameObject;
         if (effect != null)
         {
-            if (!effect.GetComponent<ParticleSystem>().isPlaying)
+            //if (!effect.GetComponent<ParticleSystem>().isPlaying)
                 effect.GetComponent<ParticleSystem>().Play();
         }
-        effect = transform.Find("transOutEff").gameObject;
+        effect = toTransPosition.Find("transOutEff").gameObject;
         if (effect != null)
         {
-            if (!effect.GetComponent<ParticleSystem>().isPlaying)
+            //if (!effect.GetComponent<ParticleSystem>().isPlaying)
                 effect.GetComponent<ParticleSystem>().Play();
         }
         Vector3 birthPosition = new Vector3(0, 0, 0);

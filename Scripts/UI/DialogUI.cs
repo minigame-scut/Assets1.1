@@ -136,12 +136,12 @@ public class DialogUI : MonoBehaviour
     private void AnalysisXml()
     {
         XmlDocument document = new XmlDocument();                 //实例化一个xml文档
-        if (GameManager.instance.sceneName == "Interface")
+        if (GameManager.instance.sceneName == "Interface" || GameManager.instance.sceneName == "map1-0")
         {
             Debug.Log(1);
             document.Load(Application.dataPath + "/Data/Dialog1.xml");//加载 XML 内容
         }
-        else if(GameManager.instance.sceneName == "map1-6")
+        else if(GameManager.instance.sceneName == "map1-6" || GameManager.instance.sceneName == "map2-0")
         {
             Debug.Log(2);
             document.Load(Application.dataPath + "/Data/Dialog2.xml");

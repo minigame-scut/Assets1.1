@@ -48,7 +48,6 @@ public class TransDoor : MonoBehaviour
                 else  //用于 map1-6 的传送门的
                 {
                     EventCenter.Broadcast<GameObject>(MyEventType.COLORTRANSDOOR, gameObject);
-                    Debug.Log("1-6TransDoor");//测试
                 }
 
                 deltaTime = 0;  //重置间隔定时器
