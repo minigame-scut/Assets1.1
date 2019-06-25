@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Dialog System ; Background ; Image ; Music -->
+<root>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>哇，怎么又是你！！还以为见鬼了，吓我一跳！</content>
+  </say>
+  <say>
+    <name>一团黑色人影</name>
+    <image>NPC</image>
+    <content>没想到吧，小伙子，我是来给你指引的。</content>
+  </say>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>前面又是什么地方，感觉好阴森啊。</content>
+  </say>
+  <say>
+    <name>一团黑色人影</name>
+    <image>NPC</image>
+    <content>前面是蝙蝠洞窟，当然要阴森一点啦！既然你通过了第一关，我就点新鲜的东西吧。这一关里有两种新的门：风门与魔法门。风门能够为你提供风力加速，魔法门能够点亮你的周围环境。至于你要如何运用它们，就要靠你自己去理解了。</content>
+  </say>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>那不是和没说一样？！</content>
+  </say>
+  <say>
+    <name>一团黑色人影</name>
+    <image>NPC</image>
+    <content>还有哦，既然这里是蝙蝠洞窟，你就要小心里面的蝙蝠，顺便提一下，；里面的蝙蝠还蛮多的。</content>
+  </say>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>切，就这些东西呀，我走了，拜拜了您嘞！</content>
+  </say>
+  <say>
+    <name>一团黑色人影</name>
+    <image>NPC</image>
+    <content>GOOD LUCK!</content>
+  </say>
+  <say>
+    <name>吉倪邰槑</name>
+    <image>小明</image>
+    <content>......</content>
+  </say>
+</root>
