@@ -39,6 +39,12 @@ public class BrokeSpeedDoor : MonoBehaviour
                 EventCenter.Broadcast(MyEventType.WAVE, this.transform.position);
                 EventCenter.Broadcast(MyEventType.BROKESPEEDDOOR, elasticTrans);   //广播弹力门触碰信号
                 deltaTime = 0;  //重置间隔定时器
+                GameObject effect = transform.Find("bounceEffect").gameObject;
+                if(effect != null)
+                {
+                    //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                        effect.GetComponent<ParticleSystem>().Play();
+                }
             }
         }
     }

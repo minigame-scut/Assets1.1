@@ -27,12 +27,12 @@ public class track : MonoBehaviour
     {
         if(trackobj==null)
         {
-            trackobj = GameObject.Find(objname);
-            if (trackobj == null)
+            if (GameObject.Find(objname) == null)
             {
                 Destroy(gameObject);
                 return;
-            }
+            }  
+            trackobj = GameObject.Find(objname);
         }
         if(timer >= live )
         {
@@ -50,10 +50,11 @@ public class track : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "player")
+        if(collision.transform.tag == "player")
         {
-            Destroy(gameObject);
+           
             EventCenter.Broadcast(MyEventType.DEATH);
+            Destroy(gameObject);
         }
     }
 }

@@ -34,6 +34,12 @@ public class GDoor : MonoBehaviour
                 Debug.Log("gDoor");//测试
                 EventCenter.Broadcast(MyEventType.GDOOR);   //广播重力门触碰信号
                 deltaTime = 0;  //重置间隔定时器
+                GameObject effect = transform.Find("gravityEffect").gameObject;
+                if (effect != null)
+                {
+                    //if(!effect.GetComponent<ParticleSystem>().isPlaying)
+                        effect.GetComponent<ParticleSystem>().Play();
+                }
             }
         }
     }

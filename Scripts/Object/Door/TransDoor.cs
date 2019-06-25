@@ -28,9 +28,6 @@ public class TransDoor : MonoBehaviour
         {
             if (deltaTime > BiggestTriggerTime)  //触发时间间隔大于一秒
             {
-
-               
-
                 if(SceneMapData.instance.getMapData().ContainsKey(gameObject.name))
                 {
                     //这个传送门对应的传送门
@@ -55,6 +52,35 @@ public class TransDoor : MonoBehaviour
                 }
 
                 deltaTime = 0;  //重置间隔定时器
+                GameObject effect = transform.Find("transInEffect").gameObject;
+                if (effect != null)
+                {
+                    //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                        effect.GetComponent<ParticleSystem>().Play();
+                }
+                effect = transform.Find("transOutEff").gameObject;
+                if (effect != null)
+                {
+                    //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                        effect.GetComponent<ParticleSystem>().Play();
+                }
+                string transName = SceneMapData.getInstance().getTransName(transform.name);
+                GameObject transobj = GameObject.Find(transName);
+                if(transobj!=null)
+                {
+                    effect = transobj.transform.Find("transInEffect").gameObject;
+                    if (effect != null)
+                    {
+                        //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                            effect.GetComponent<ParticleSystem>().Play();
+                    }
+                    effect = transobj.transform.Find("transOutEff").gameObject;
+                    if (effect != null)
+                    {
+                        //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                            effect.GetComponent<ParticleSystem>().Play();
+                    }
+                }
             }
         }
     }
