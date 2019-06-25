@@ -35,19 +35,24 @@ public class SceneMapData
             mapData = new Dictionary<string, string>();
 
         //关卡映射
-            mapData.Add("nextPlace1-1-2", "birthPlace1-2-1");
-            mapData.Add("nextPlace1-0-1", "birthPlace1-1-1");
-            mapData.Add("nextPlace1-1-3", "birthPlace1-2-2");
-            mapData.Add("nextPlace1-2-1", "birthPlace1-1-2");
-            mapData.Add("nextPlace1-2-2", "birthPlace1-1-3");
-            mapData.Add("nextPlace1-2-3", "birthPlace1-4-1");
-            mapData.Add("nextPlace1-2-4", "birthPlace1-3-1");
-            mapData.Add("nextPlace1-3-1", "birthPlace1-2-4");
-            mapData.Add("nextPlace1-4-1", "birthPlace1-2-3");
-            mapData.Add("nextPlace1-3-2", "birthPlace1-6-1");
-            mapData.Add("nextPlace1-6-1", "birthPlace1-3-2");
-            mapData.Add("nextPlace1-4-2", "birthPlace1-5-1");
-            mapData.Add("nextPlace1-6-2", "birthPlace1-8-1");
+        mapData.Add("nextPlace1-1-2", "birthPlace1-2-1");
+        mapData.Add("nextPlace1-0-1", "birthPlace1-1-1");
+        mapData.Add("nextPlace1-1-3", "birthPlace1-2-2");
+        mapData.Add("nextPlace1-2-1", "birthPlace1-1-2");
+        mapData.Add("nextPlace1-2-2", "birthPlace1-1-3");
+        mapData.Add("nextPlace1-2-3", "birthPlace1-4-1");
+        mapData.Add("nextPlace1-2-4", "birthPlace1-3-1");
+        mapData.Add("nextPlace1-3-1", "birthPlace1-2-4");
+        mapData.Add("nextPlace1-4-1", "birthPlace1-2-3");
+        mapData.Add("nextPlace1-3-2", "birthPlace1-6-1");
+        mapData.Add("nextPlace1-6-1", "birthPlace1-3-2");
+        mapData.Add("nextPlace1-4-2", "birthPlace1-5-1");
+        mapData.Add("nextPlace1-6-2", "birthPlace2-0-1");
+        mapData.Add("nextPlace2-0-1", "birthPlace2-1-1");
+        mapData.Add("nextPlace2-1-1", "birthPlace2-2-1");
+        mapData.Add("nextPlace2-2-1", "birthPlace2-3-1");
+        mapData.Add("nextPlace2-3-1", "birthPlace2-4-1");
+        mapData.Add("nextPlace2-4-1", "birthPlace2-5-1");
 
         //传送门映射
         mapData.Add("transDoor1-1-1-1", "transDoor1-1-1-2");
