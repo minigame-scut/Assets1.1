@@ -44,6 +44,8 @@
     public int numOfKey = 0;
     //笑脸数目
     public int numOfFace = 0;
+    //死亡次数
+    public int numOfDeath = 0;
 
     public void setPlayerVector3DPositionData(double x,double y, double z)
     {

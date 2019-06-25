@@ -262,6 +262,7 @@ public class SManager : MonoBehaviour
         if (gamePlayer != null)
         {
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().isDead = true;
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().numOfDeath++;
             Destroy(gamePlayer, 1.67f);
             StartCoroutine(createNewPlayerInBirthPlaceAfterDeath());
         }
