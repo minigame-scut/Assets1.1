@@ -14,6 +14,8 @@ public class ResourceManager : MonoBehaviour
     public Dictionary<string, AudioClip> musicDictionary;
     public Dictionary<string, GameObject> gameObjectDictionary;
     public Dictionary<string, Material> materialDictionary;
+    public Dictionary<string, Sprite> spriteDictionary;
+
     public static ResourceManager GetInstance()
     {
             return instance;
@@ -37,6 +39,7 @@ public class ResourceManager : MonoBehaviour
         musicDictionary = new Dictionary<string, AudioClip>();
         gameObjectDictionary = new Dictionary<string, GameObject>();
         materialDictionary = new Dictionary<string, Material>();
+        spriteDictionary = new Dictionary<string, Sprite>();
         init();
     }
 
@@ -76,7 +79,16 @@ public class ResourceManager : MonoBehaviour
         gameObjectDictionary.Add("GameManagerRes/AudioManager", Resources.Load<GameObject>("GameManagerRes/AudioManager"));
         gameObjectDictionary.Add("GameManagerRes/UI", Resources.Load<GameObject>("GameManagerRes/UI"));
         gameObjectDictionary.Add("GameManagerRes/bat24", Resources.Load<GameObject>("GameManagerRes/bat24"));
+        gameObjectDictionary.Add("GameManagerRes/ball", Resources.Load<GameObject>("GameManagerRes/ball"));
+
         materialDictionary.Add("Materials/lightM", Resources.Load<Material>("Materials/lightM"));
+
+        spriteDictionary.Add("Image/Roles/shilaimu/sprite_0", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_0"));
+        spriteDictionary.Add("Image/Roles/shilaimu/sprite_2", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_2"));
+        spriteDictionary.Add("Image/Roles/shilaimu/sprite_3", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_3"));
+        spriteDictionary.Add("Image/Roles/shilaimu/sprite_4", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_4"));
+        spriteDictionary.Add("Image/Roles/shilaimu/sprite_5", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_5"));
+
     }
     public AudioClip getClip(string name)
     {
@@ -94,6 +106,13 @@ public class ResourceManager : MonoBehaviour
     {
         if (materialDictionary.ContainsKey(name))
             return materialDictionary[name];
+        return null;
+    }
+
+    public Sprite getSptite(string name)
+    {
+        if (spriteDictionary.ContainsKey(name))
+            return spriteDictionary[name];
         return null;
     }
 }
