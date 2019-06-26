@@ -33,6 +33,12 @@ public class MegicalDoor : MonoBehaviour
                 Debug.Log("megicalDoor");//测试
                 EventCenter.Broadcast(MyEventType.MAGICALDOOR);   //广播魔法门触碰信号
                 deltaTime = 0;  //重置间隔定时器
+                GameObject effect = transform.Find("magicEffect").gameObject;
+                if (effect != null)
+                {
+                    //if (!effect.GetComponent<ChainLightning>().isPlaying())
+                    effect.GetComponent<ParticleSystem>().Play();
+                }
             }
         }
     }

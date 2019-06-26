@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource musicPlayer;//播放背景音乐的组件
     public AudioSource soundPlayer;//播放音效的组件
+    private GameObject[] ASS;//当前场景所有播放组件
 
     //AudioClip clip;
     public static AudioManager Instance
@@ -22,6 +23,10 @@ public class AudioManager : MonoBehaviour
 
         //Instance = this;//初始化该实例类
 
+    }
+    private void Awake()
+    {
+        ASS = GameObject.FindGameObjectsWithTag("AS");
     }
 
     //播放背景音乐
@@ -81,9 +86,14 @@ public class AudioManager : MonoBehaviour
     public void setMusciVolume(float mv)
     {
         musicPlayer.volume = mv;
+        
     }
     public void setSoundVolume(float sv)
     {
+        foreach(GameObject AS in ASS)
+        {
+            AS.GetComponent<AudioSource>().volume = sv;
+        }
         soundPlayer.volume = sv;
     }
 }

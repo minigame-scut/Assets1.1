@@ -296,9 +296,20 @@ public class GameManager : MonoBehaviour
 
     IEnumerator waitForFindForTransDoor()
     {
-
         yield return new WaitForSeconds(1);
         Transform toTransPosition = GameObject.Find(toTrans).transform;
+        GameObject effect = toTransPosition.Find("transInEffect").gameObject;
+        if (effect != null)
+        {
+            //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                effect.GetComponent<ParticleSystem>().Play();
+        }
+        effect = toTransPosition.Find("transOutEff").gameObject;
+        if (effect != null)
+        {
+            //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                effect.GetComponent<ParticleSystem>().Play();
+        }
         Vector3 birthPosition = new Vector3(0, 0, 0);
         Debug.Log("toTransPosition" + toTransPosition.position);
         //生成玩家 
@@ -439,7 +450,7 @@ public class GameManager : MonoBehaviour
             changeMusicVolum(0.8f);
             changeSoundVolum(0.8f);
            
-            if (sceneName == "map1-0")
+            if (sceneName == "map1-0"||sceneName=="map2-0")
             {
                 Debug.Log("123456");
                 aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map1-0");
@@ -450,7 +461,11 @@ public class GameManager : MonoBehaviour
                 aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/Interface");
                 return;
             }
-            aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map1");
+            if(sceneName.StartsWith("map1"))
+                aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map1");
+            if (sceneName.StartsWith("map2"))
+                aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map2");
+
             return;
         }
     }

@@ -52,6 +52,7 @@ public class ResourceManager : MonoBehaviour
         musicDictionary.Add("Music/BGM/map1", Resources.Load<AudioClip>("Music/BGM/map1"));
         musicDictionary.Add("Music/BGM/map1-0", Resources.Load<AudioClip>("Music/BGM/map1-0"));
         musicDictionary.Add("Music/BGM/Interface", Resources.Load<AudioClip>("Music/BGM/Interface"));
+        musicDictionary.Add("Music/BGM/map2", Resources.Load<AudioClip>("Music/BGM/map2"));
         musicDictionary.Add("Music/Sounds/Walk", Resources.Load<AudioClip>("Music/Sounds/Walk"));
         musicDictionary.Add("Music/Sounds/Jump", Resources.Load<AudioClip>("Music/Sounds/Jump"));
         musicDictionary.Add("Music/Sounds/Rush", Resources.Load<AudioClip>("Music/Sounds/Rush"));
@@ -63,6 +64,13 @@ public class ResourceManager : MonoBehaviour
         musicDictionary.Add("Music/Sounds/InOutWorldDoor", Resources.Load<AudioClip>("Music/Sounds/InOutWorldDoor"));
         musicDictionary.Add("Music/Sounds/LevelDoor", Resources.Load<AudioClip>("Music/Sounds/LevelDoor"));
         musicDictionary.Add("Music/Sounds/GetProp", Resources.Load<AudioClip>("Music/Sounds/GetProp"));
+        musicDictionary.Add("Music/Sounds/MagicalDoor", Resources.Load<AudioClip>("Music/Sounds/MagicalDoor"));
+
+        musicDictionary.Add("Music/Boss/Attack", Resources.Load<AudioClip>("Music/Boss/Attack"));
+        musicDictionary.Add("Music/Boss/Bats", Resources.Load<AudioClip>("Music/Boss/Bats"));
+        musicDictionary.Add("Music/Boss/Hurt", Resources.Load<AudioClip>("Music/Boss/Hurt"));
+        musicDictionary.Add("Music/Boss/Wing", Resources.Load<AudioClip>("Music/Boss/Wing"));
+
         gameObjectDictionary.Add("GameManagerRes/player", Resources.Load<GameObject>("GameManagerRes/player"));
         gameObjectDictionary.Add("GameManagerRes/bat", Resources.Load<GameObject>("GameManagerRes/bat"));
         gameObjectDictionary.Add("GameManagerRes/AudioManager", Resources.Load<GameObject>("GameManagerRes/AudioManager"));

@@ -8,7 +8,7 @@ public class SceneMapData
 {
     public static SceneMapData instance;
     //存储映射关系的键值对容器
-    private static  Dictionary<string, string> mapData;
+    private static Dictionary<string, string> mapData;
 
     private SceneMapData()
     {
@@ -17,7 +17,7 @@ public class SceneMapData
 
     public static SceneMapData getInstance()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = new SceneMapData();
             return instance;
@@ -28,31 +28,31 @@ public class SceneMapData
         }
     }
 
-    public  void init()
+    public void init()
     {
-      //if(instance != null)
-      //  {
-            mapData = new Dictionary<string, string>();
+        //if(instance != null)
+        //  {
+        mapData = new Dictionary<string, string>();
 
         //关卡映射
-            mapData.Add("nextPlace1-1-2", "birthPlace1-2-1");
-            mapData.Add("nextPlace1-0-1", "birthPlace1-1-1");
-            mapData.Add("nextPlace1-1-3", "birthPlace1-2-2");
-            mapData.Add("nextPlace1-2-1", "birthPlace1-1-2");
-            mapData.Add("nextPlace1-2-2", "birthPlace1-1-3");
-            mapData.Add("nextPlace1-2-3", "birthPlace1-4-1");
-            mapData.Add("nextPlace1-2-4", "birthPlace1-3-1");
-            mapData.Add("nextPlace1-3-1", "birthPlace1-2-4");
-            mapData.Add("nextPlace1-4-1", "birthPlace1-2-3");
-            mapData.Add("nextPlace1-3-2", "birthPlace1-6-1");
-            mapData.Add("nextPlace1-6-1", "birthPlace1-3-2");
-            mapData.Add("nextPlace1-4-2", "birthPlace1-5-1");
-            mapData.Add("nextPlace1-6-2", "birthPlace2-0-1");
-            mapData.Add("nextPlace2-0-1", "birthPlace2-1-1");
-            mapData.Add("nextPlace2-1-1", "birthPlace2-2-1");
-            mapData.Add("nextPlace2-2-1", "birthPlace2-3-1");
-            mapData.Add("nextPlace2-3-1", "birthPlace2-4-1");
-            mapData.Add("nextPlace2-4-1", "birthPlace2-5-1");
+        mapData.Add("nextPlace1-1-2", "birthPlace1-2-1");
+        mapData.Add("nextPlace1-0-1", "birthPlace1-1-1");
+        mapData.Add("nextPlace1-1-3", "birthPlace1-2-2");
+        mapData.Add("nextPlace1-2-1", "birthPlace1-1-2");
+        mapData.Add("nextPlace1-2-2", "birthPlace1-1-3");
+        mapData.Add("nextPlace1-2-3", "birthPlace1-4-1");
+        mapData.Add("nextPlace1-2-4", "birthPlace1-3-1");
+        mapData.Add("nextPlace1-3-1", "birthPlace1-2-4");
+        mapData.Add("nextPlace1-4-1", "birthPlace1-2-3");
+        mapData.Add("nextPlace1-3-2", "birthPlace1-6-1");
+        mapData.Add("nextPlace1-6-1", "birthPlace1-3-2");
+        mapData.Add("nextPlace1-4-2", "birthPlace1-5-1");
+        mapData.Add("nextPlace1-6-2", "birthPlace2-0-1");
+        mapData.Add("nextPlace2-0-1", "birthPlace2-1-1");
+        mapData.Add("nextPlace2-1-1", "birthPlace2-2-1");
+        mapData.Add("nextPlace2-2-1", "birthPlace2-3-1");
+        mapData.Add("nextPlace2-3-1", "birthPlace2-4-1");
+        mapData.Add("nextPlace2-4-1", "birthPlace2-5-1");
 
         //传送门映射
         mapData.Add("transDoor1-1-1-1", "transDoor1-1-1-2");
@@ -61,8 +61,10 @@ public class SceneMapData
         mapData.Add("transDoor1-5-2-1", "transDoor1-1-2-2");
         mapData.Add("transDoor1-3-3-2", "transDoor1-7-3-1");
         mapData.Add("transDoor1-7-3-1", "transDoor1-3-3-2");
-        mapData.Add("transDoor2-5-1-1", "transDoor2-5-1-2");
         mapData.Add("transDoor2-5-1-2", "transDoor2-5-1-1");
+        mapData.Add("transDoor2-5-1-1", "transDoor2-5-1-2");
+
+
         //里表世界门映射
         mapData.Add("inworldDoor1-3-1", "outworldDoor1-7-1");
         mapData.Add("outworldDoor1-7-1", "inworldDoor1-3-1");
@@ -74,6 +76,7 @@ public class SceneMapData
         mapData.Add("outworldDoor2-6-1", "inworldDoor2-3-1");
         mapData.Add("inworldDoor2-3-2", "outworldDoor2-6-2");
         mapData.Add("outworldDoor2-6-2", "inworldDoor2-3-2");
+
 
         //地图编号与build编号的映射
         mapData.Add("map1-0", "1");
@@ -99,7 +102,7 @@ public class SceneMapData
     {
         return mapData;
     }
-   //修改映射关系
+    //修改映射关系
     public void addMapData(string key, string value)
     {
         //已有这个key
@@ -126,8 +129,13 @@ public class SceneMapData
             Debug.Log("error_noSuchKeyAndValue");
         }
     }
+    public string getTransName(string name)
+    {
+        if (mapData.ContainsKey(name))
+            return mapData[name];
+        return null;
+    }
 
 
-    
 
 }

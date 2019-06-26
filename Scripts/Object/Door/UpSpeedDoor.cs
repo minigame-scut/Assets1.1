@@ -34,6 +34,12 @@ public class UpSpeedDoor : MonoBehaviour
                 Debug.Log("upSpeedDoor");//测试
                 EventCenter.Broadcast(MyEventType.UPSPEEDDOOR);   //广播重力门触碰信号
                 deltaTime = 0;  //重置间隔定时器
+                GameObject effect = transform.Find("upSpeedEffect").gameObject;
+                if (effect != null)
+                {
+                    //if (!effect.GetComponent<ChainLightning>().isPlaying())
+                        effect.GetComponent<ChainLightning>().Play();
+                }
             }
         }
     }

@@ -37,8 +37,18 @@ public class BrokeSpeedDoor : MonoBehaviour
 
                 Debug.Log("BorkeDoor");//测试
                 EventCenter.Broadcast(MyEventType.WAVE, this.transform.position);
-                EventCenter.Broadcast(MyEventType.BROKESPEEDDOOR, elasticTrans);   //广播弹力门触碰信号
+                EventCenter.Broadcast(MyEventType.BROKESPEEDDOOR, elasticTrans, transform.Find("bounceEffect") != null);   //广播弹力门触碰信号
                 deltaTime = 0;  //重置间隔定时器
+                if(transform.Find("bounceEffect")!=null)
+                {
+                    GameObject effect = transform.Find("bounceEffect").gameObject;
+                    if (effect != null)
+                    {
+                        //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                        effect.GetComponent<ParticleSystem>().Play();
+                    }
+                }
+
             }
         }
     }

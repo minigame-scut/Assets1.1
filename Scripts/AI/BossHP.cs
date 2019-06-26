@@ -49,11 +49,13 @@ public class BossHP : MonoBehaviour
     {
         if (collision.tag == "player"&&hurtCD >= 60)
         {
+            
             HP--;
+            transform.parent.transform.GetComponent<AudioSource>().PlayOneShot(ResourceManager.GetInstance().getClip("Music/Boss/Hurt"));
             hurtCD = 0;
             transform.parent.gameObject.GetComponentInChildren<Animator>().SetBool("hurt", true);
             Invoke("setHurtFalse",0.66f);
-            Debug.Log(123);
+            //Debug.Log(123);
             //setHurtFalse();
         }
            

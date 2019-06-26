@@ -28,9 +28,6 @@ public class TransDoor : MonoBehaviour
         {
             if (deltaTime > BiggestTriggerTime)  //触发时间间隔大于一秒
             {
-
-               
-
                 if(SceneMapData.instance.getMapData().ContainsKey(gameObject.name))
                 {
                     //这个传送门对应的传送门
@@ -51,10 +48,38 @@ public class TransDoor : MonoBehaviour
                 else  //用于 map1-6 的传送门的
                 {
                     EventCenter.Broadcast<GameObject>(MyEventType.COLORTRANSDOOR, gameObject);
-                    Debug.Log("1-6TransDoor");//测试
                 }
 
                 deltaTime = 0;  //重置间隔定时器
+                GameObject effect = transform.Find("transInEffect").gameObject;
+                if (effect != null)
+                {
+                    //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                        effect.GetComponent<ParticleSystem>().Play();
+                }
+                effect = transform.Find("transOutEff").gameObject;
+                if (effect != null)
+                {
+                    //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                        effect.GetComponent<ParticleSystem>().Play();
+                }
+                string transName = SceneMapData.getInstance().getTransName(transform.name);
+                GameObject transobj = GameObject.Find(transName);
+                if(transobj!=null)
+                {
+                    effect = transobj.transform.Find("transInEffect").gameObject;
+                    if (effect != null)
+                    {
+                        //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                            effect.GetComponent<ParticleSystem>().Play();
+                    }
+                    effect = transobj.transform.Find("transOutEff").gameObject;
+                    if (effect != null)
+                    {
+                        //if (!effect.GetComponent<ParticleSystem>().isPlaying)
+                            effect.GetComponent<ParticleSystem>().Play();
+                    }
+                }
             }
         }
     }

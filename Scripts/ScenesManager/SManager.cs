@@ -118,9 +118,9 @@ public class SManager : MonoBehaviour
     public void birthPlayer()
     {
         //如果找到玩家物体，则销毁当前玩家物体
-        if (GameObject.Find("player(Clone)"))
+        if (GameObject.FindWithTag("player"))
         {
-            Destroy(GameObject.Find("player(Clone)"));
+            Destroy(GameObject.FindWithTag("player"));
             //return;
         }
         //加载player预制体，在出生位置创建玩家
@@ -158,15 +158,12 @@ public class SManager : MonoBehaviour
         {
             Debug.Log(e.Message);
         }
-
-
-
     }
 
 
     //委托的方法
     //玩家通过门重置状态，玩家死亡，玩家重置位置，玩家经过门之后的效果
-    private void responseForSignalBROKESPEEDDOOR(Transform transform)
+    private void responseForSignalBROKESPEEDDOOR(Transform transform,bool isDoor)
     {
         if (gamePlayer != null)
         {
@@ -176,7 +173,7 @@ public class SManager : MonoBehaviour
             //gamePlayer.GetComponent<PlayerPlatformController>().rig.velocity *= (transform.right.x == 0) ? new Vector2(0, 1) : new Vector2(1, 0);
         }
         //播放BrokeSpeedDoor音效
-        if (audioManager != null)
+        if (audioManager != null && isDoor)
         {
             audioManager.GetComponent<AudioManager>().PlaySound("Music/Sounds/BounceDoor");
         }
@@ -201,6 +198,11 @@ public class SManager : MonoBehaviour
     private void responseForMAGICALDOOR()
     {
         //Magic
+        if (audioManager != null)
+        {
+            audioManager.GetComponent<AudioManager>().PlaySound("Music/Sounds/MagicalDoor");
+        }
+
     }
     private void responseForTRANSDOOR(Vector3 newPosition, string curTag)
     {
@@ -262,6 +264,7 @@ public class SManager : MonoBehaviour
         if (gamePlayer != null)
         {
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().isDead = true;
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().numOfDeath++;
             Destroy(gamePlayer, 1.67f);
             StartCoroutine(createNewPlayerInBirthPlaceAfterDeath());
         }
@@ -390,7 +393,7 @@ public class SManager : MonoBehaviour
     private void listener()
     {
         //监听门信号
-        EventCenter.AddListener<Transform>(MyEventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
+        EventCenter.AddListener<Transform,bool>(MyEventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
         EventCenter.AddListener(MyEventType.DEATHDOOR, responseForSignalDEATHDOOR);
         EventCenter.AddListener(MyEventType.GDOOR, responseForSignalGDOOR);
         EventCenter.AddListener(MyEventType.MAGICALDOOR, responseForMAGICALDOOR);
@@ -411,6 +414,12 @@ public class SManager : MonoBehaviour
         EventCenter.AddListener(MyEventType.BLOWDELETE, responseForBLOWDELETE);
         //
         EventCenter.AddListener<GameObject>(MyEventType.DESTROY, responseForDESTROY);
+
+        //监听BOSS信号
+        //EventCenter.AddListener(MyEventType.BOSSHURT, responseForBOSSHURT);
+        //EventCenter.AddListener(MyEventType.BOSSWING, responseForBOSSWING);
+        //EventCenter.AddListener(MyEventType.BATS, responseForBATS);
+        //EventCenter.AddListener(MyEventType.BOSSATTACK, responseForBOSSATTACK);
     }
 
     IEnumerator createNewPlayerInBirthPlaceAfterDeath()
@@ -421,6 +430,34 @@ public class SManager : MonoBehaviour
             birthPlayer();
             EventCenter.Broadcast(MyEventType.REBIRTH);
         }
-
     }
+
+    //void responseForBOSSHURT()
+    //{
+    //    if (audioManager != null)
+    //    {
+    //        audioManager.GetComponent<AudioManager>().PlaySound("Music/Boss/Hurt");
+    //    }
+    //}
+    //void responseForBOSSWING()
+    //{
+    //    if (audioManager != null)
+    //    {
+    //        audioManager.GetComponent<AudioManager>().PlaySound("Music/Boss/Wing");
+    //    }
+    //}
+    //void responseForBATS()
+    //{
+    //    if (audioManager != null)
+    //    {
+    //        audioManager.GetComponent<AudioManager>().PlaySound("Music/Boss/Bats");
+    //    }
+    //}
+    //void responseForBOSSATTACK()
+    //{
+    //    if (audioManager != null)
+    //    {
+    //        audioManager.GetComponent<AudioManager>().PlaySound("Music/Boss/Attack");
+    //    }
+    //}
 }

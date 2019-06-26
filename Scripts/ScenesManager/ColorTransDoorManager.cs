@@ -94,12 +94,35 @@ public class ColorTransDoorManager : MonoBehaviour
         {
             //传送至本关卡的最终的传送门
             player.transform.position = transDoor_0.transform.position + new Vector3(0.8f, 0.0f);
+            GameObject effect = transDoor_0.transform.Find("transInEffect").gameObject;
+            if (effect != null)
+            {
+                effect.GetComponent<ParticleSystem>().Play();
+            }
+            effect = transDoor_0.transform.Find("transOutEff").gameObject;
+            if (effect != null)
+            {
+                effect.GetComponent<ParticleSystem>().Play();
+            }
             return;   //若启用此语句, 则表示, 传送至本关卡最终传送门后, 上面四扇门的颜色不会改变(保持全是红色)
         }
         else
         {
             //传送至上方四扇门之一
             toTransDoor = genRandomTransDoor();
+            GameObject effect = toTransDoor.transform.Find("transInEffect").gameObject;
+            if(!toTransDoor.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]))
+            {
+                if (effect != null)
+                {
+                    effect.GetComponent<ParticleSystem>().Play();
+                }
+                effect = toTransDoor.transform.Find("transOutEff").gameObject;
+                if (effect != null)
+                {
+                    effect.GetComponent<ParticleSystem>().Play();
+                }
+            }
             player.transform.position = toTransDoor.transform.position + new Vector3(0.0f, 1.0f);
         }
         
