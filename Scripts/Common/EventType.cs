@@ -40,4 +40,9 @@
     WAVE,            //波纹
     //NPC
     DIALOG,         //对话信号
+    //Boss
+    BOSSWING,           //挥动翅膀
+    BOSSHURT,           //受到攻击
+    BATS,           //大群蝙蝠
+    BOSSATTACK,         //攻击
 }

@@ -38,6 +38,9 @@ public class Boss : MonoBehaviour
     //当前Boss状态
     private BossState bossState;
 
+    //持有的声音控件
+    AudioSource bossAS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,7 @@ public class Boss : MonoBehaviour
         shadowTimer = 0;
         dir = -1;
         bossState = BossState.walk;
+        bossAS = transform.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -58,24 +62,35 @@ public class Boss : MonoBehaviour
         {
             case BossState.walk:
                 {
+                    if (!bossAS.isPlaying)
+                        bossAS.Play();
                     Walk();
                     runTimer++;
                     if (runTimer > runCD)
                     {
-                        bossState = BossState.attack;
-                        lookAtPlayer();
-                        runTimer = 0;
+                        if (runTimer == runCD + 1)
+                            bossAS.PlayOneShot(ResourceManager.GetInstance().getClip("Music/Boss/Attack"));
+                        if (runTimer > runCD + 30)
+                        {
+                            lookAtPlayer();
+                            runTimer = 0;
+                            bossState = BossState.attack;
+                        }
                     }
                     break;
                 }
             case BossState.attack:
                 {
+                    if (bossAS.isPlaying)
+                        bossAS.Stop();
                     Attack();
                     CreateAttackShadow();
                     break;
                 }
             case BossState.back:
                 {
+                    if (!bossAS.isPlaying)
+                        bossAS.Play();
                     Back();
                     break;
                 }
@@ -145,4 +160,5 @@ public class Boss : MonoBehaviour
             dir *= -1;
         }
     }
+
 }
