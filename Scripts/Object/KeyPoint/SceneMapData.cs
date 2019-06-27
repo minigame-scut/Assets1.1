@@ -94,6 +94,13 @@ public class SceneMapData
         mapData.Add("map2-4", "13");
         mapData.Add("map2-5", "14");
         mapData.Add("map2-6", "15");
+        mapData.Add("map3-0", "16");
+        mapData.Add("map3-1", "17");
+        mapData.Add("map3-2", "18");
+        mapData.Add("map3-3", "19");
+        mapData.Add("map3-4", "20");
+        mapData.Add("map3-5", "21");
+        mapData.Add("map3-6", "22");
 
 
     }
