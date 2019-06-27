@@ -7,13 +7,20 @@ enum dir{
     UP,
     DOWN,
     LEFT,
-    RIGHT
+    RIGHT,
+    NO,
 }
 
 public class ballController : MonoBehaviour
 {
 
     Ray2D ray;
+
+    public Vector2 moveDir;
+    //上一时刻的位置
+    Vector2 prePos;
+
+    public float forceFactor = 2f;
 
     public  float timer = 0f;
     float maxStayTime = 2f;
@@ -27,7 +34,13 @@ public class ballController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        collDir = dir.NO;
+        prePos = transform.position;
+        moveDir = Vector2.zero;
+        System.Random random = new System.Random();
+        float xF = random.Next(-300, 400);
+        float yF = random.Next(-300, 400);
+        rb2d.AddForce(new Vector2(xF,yF));
     }
     void OnEnable()
     {
@@ -38,30 +51,21 @@ public class ballController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        moveDir.x = transform.position.x - prePos.x;
+        moveDir.y = transform.position.y - prePos.y;
+        moveDir = moveDir.normalized;
         ballJump();
 
-        //ray = new Ray2D(new Vector2(transform.position.x, transform.position.y), Vector2.down);
-        //Debug.DrawRay(ray.origin, ray.direction, Color.blue,0.3f);//起点，方向，颜色（可选）
-        //RaycastHit2D info = Physics2D.Raycast(ray.origin, ray.direction,0.3f);
-        //if(info.collider!= null)
-        //{
-
-        //    if (info.collider.transform.tag == "trap")
-        //    {
-        //        Debug.Log("awdwad");
-        //        rb2d.AddForce(new Vector2(0,1000));
-        //    }
-        //}
 
     }
 
     private void OnCollisionExit2D(Collision2D coll)
     {
-        if (coll.transform.tag == "trap")
+        if (coll.transform.tag == "ground")
         {
             timer = 0;
             isMove = true;
+            prePos = transform.position;
         }
     }
 
@@ -90,48 +94,45 @@ public class ballController : MonoBehaviour
 
 private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "trap")
+        if (collision.transform.tag == "ground")
         {
             System.Random random = new System.Random();
-            float xF = random.Next(100, 1000);
-            float yF = random.Next(100, 1000);
-           
-            
+            float xF = random.Next(300, 400) * forceFactor;
+            float yF = random.Next(300, 400) * forceFactor;
+
+            Vector2 force = new Vector2(xF, yF);
+            //force *= moveDir;
+            if (moveDir.x < 0)
+                force.x *= -1;
+            if (moveDir.y < 0)
+                force.y *= -1;
+            //Debug.Log(collision.contacts[0].normal.x + "  " + collision.contacts[0].normal.y);
             //判定球撞击方向
-            if (collision.contacts[0].normal.y == -1)//从上方碰撞
+            if (collision.contacts[0].normal.y == -1 && collision.contacts[0].normal.x== 0)//从上方碰撞
             {
-                if (random.Next() % 2 == 0)
-                    xF *= -1;
-                yF *= -1;
-                //Debug.Log("上");
+               
                 collDir = dir.UP;
+                force.y *= -1;
             }
-            else if (collision.contacts[0].normal.y == 1)//从下方碰撞
+            else if (collision.contacts[0].normal.y == 1 && collision.contacts[0].normal.x == 0)//从下方碰撞
             {
-                if (random.Next() % 2 == 0)
-                    xF *= -1;
-                //Debug.Log("下");
+                force.y *= -1;
                 collDir = dir.DOWN;
             }
-            else if (collision.contacts[0].normal.x == 1)//左边碰撞
+            else if (collision.contacts[0].normal.x >0 && collision.contacts[0].normal.y == 0)//左边碰撞
             {
-                if (random.Next() % 2 == 0)
-                   yF *= -1;
-             
-                //Debug.Log("左");
+                force.x *= -1;
                 collDir = dir.LEFT;
             }
-            else if (collision.contacts[0].normal.x == -1)//右边碰撞
+            else if (collision.contacts[0].normal.x < 0 && collision.contacts[0].normal.y == 0)//右边碰撞
             {
-                if (random.Next() % 2 == 0)
-                    yF *= -1;
-                xF *= -1;
-               // Debug.Log("右");
+                force.x *= -1;
+                // Debug.Log("右");
                 collDir = dir.RIGHT;
             }
 
 
-            StartCoroutine(Coll(new Vector2(xF, yF), collDir));
+            StartCoroutine(Coll(force, collDir));
         }
     }
 
@@ -169,3 +170,37 @@ private void OnCollisionEnter2D(Collision2D collision)
     }
 }
 
+/*
+///
+///   if (collision.contacts[0].normal.y == -1)//从上方碰撞
+            {
+                if (random.Next() % 2 == 0)
+                    xF *= -1;
+                yF *= -1;
+                //Debug.Log("上");
+                collDir = dir.UP;
+            }
+            else if (collision.contacts[0].normal.y == 1)//从下方碰撞
+            {
+                if (random.Next() % 2 == 0)
+                    xF *= -1;
+                //Debug.Log("下");
+                collDir = dir.DOWN;
+            }
+            else if (collision.contacts[0].normal.x == 1)//左边碰撞
+            {
+                if (random.Next() % 2 == 0)
+                   yF *= -1;
+             
+                //Debug.Log("左");
+                collDir = dir.LEFT;
+            }
+            else if (collision.contacts[0].normal.x == -1)//右边碰撞
+            {
+                if (random.Next() % 2 == 0)
+                    yF *= -1;
+                xF *= -1;
+               // Debug.Log("右");
+                collDir = dir.RIGHT;
+            }
+///*/

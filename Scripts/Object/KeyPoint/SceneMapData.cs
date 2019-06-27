@@ -63,6 +63,8 @@ public class SceneMapData
         mapData.Add("transDoor1-7-3-1", "transDoor1-3-3-2");
         mapData.Add("transDoor2-5-1-2", "transDoor2-5-1-1");
         mapData.Add("transDoor2-5-1-1", "transDoor2-5-1-2");
+        mapData.Add("transDoor3-5-1-1", "transDoor3-5-1-2");
+        mapData.Add("transDoor3-5-1-2", "transDoor3-5-1-1");
 
 
         //里表世界门映射
