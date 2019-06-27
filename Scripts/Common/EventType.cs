@@ -26,6 +26,10 @@
     INITRUSHDELETE,  //重置冲刺buff消除
     BLOWDELETE,      //风力buff消除
     NEXTMAP,        //玩家进入下一大关卡
+    PREPARESWIM,    //准备游泳
+    SWIMDELETE,     //移除能够游泳buff
+    INPOOL,         //进入泳池
+    OUTPOOL,        //离开泳池
     //道具信号
     DESTROY,          //道具销毁
     UITOGAME,        //进入游戏
@@ -40,9 +44,4 @@
     WAVE,            //波纹
     //NPC
     DIALOG,         //对话信号
-    //Boss
-    BOSSWING,           //挥动翅膀
-    BOSSHURT,           //受到攻击
-    BATS,           //大群蝙蝠
-    BOSSATTACK,         //攻击
 }
