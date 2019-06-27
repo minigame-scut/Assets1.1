@@ -80,6 +80,8 @@ public class ResourceManager : MonoBehaviour
         gameObjectDictionary.Add("GameManagerRes/UI", Resources.Load<GameObject>("GameManagerRes/UI"));
         gameObjectDictionary.Add("GameManagerRes/bat24", Resources.Load<GameObject>("GameManagerRes/bat24"));
         gameObjectDictionary.Add("GameManagerRes/ball", Resources.Load<GameObject>("GameManagerRes/ball"));
+        gameObjectDictionary.Add("GameManagerRes/Slime3-4", Resources.Load<GameObject>("GameManagerRes/Slime3-4"));
+        gameObjectDictionary.Add("GameManagerRes/map3-4ball", Resources.Load<GameObject>("GameManagerRes/map3-4ball"));
 
         materialDictionary.Add("Materials/lightM", Resources.Load<Material>("Materials/lightM"));
 
