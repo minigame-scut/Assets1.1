@@ -10,6 +10,7 @@ public enum Buff
     ELASTIC,    //弹力
     INITJUMP,   //重置跳
     INITRUSH,    //重置冲
-    BLOW       //吹风    
-
+    BLOW,       //吹风    
+    CANSWIM,     //能够游泳
+    SWIM        //游泳
 }

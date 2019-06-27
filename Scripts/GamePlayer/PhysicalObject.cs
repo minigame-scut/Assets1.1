@@ -10,6 +10,7 @@ public class PhysicalObject : MonoBehaviour
     //判定是否在地上的阈值
     public float minGroundNormalY = 0.65f;
     protected float gravityModifier = 0.68f;
+    protected float swimModifier = 0.4f;
     //是否在rush
     public bool isRush = false;
     //是否在walk
@@ -20,6 +21,11 @@ public class PhysicalObject : MonoBehaviour
     public bool isGround = true;
     //是否下坠
     public bool isDrop = false;
+    //是否游泳
+    public bool isSwim = false;
+    //是否在水中上升
+    public bool isUp = false;
+
 
     protected Vector2 targetVelocity;
 
@@ -71,10 +77,19 @@ public class PhysicalObject : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log(isSwim);
         //Physics2D.gravity = (0,-9.8f)  模拟重力加速
-        //if(velocity.y <= 5.0f)
-        //if(velocity.y <= 10.0f && velocity.y >= -10.0f)
+        if (!(playerData.buff.contains(Buff.SWIM) && playerData.buff.contains(Buff.CANSWIM)))
+        {
             velocity += gravityModifier * Physics2D.gravity * Time.fixedDeltaTime * playerData.gravityTrans;
+            isSwim = false;
+        }  
+        else
+        {
+            isSwim = true;
+            if (velocity.y <= 3.0f || velocity.y >= -3.0f)
+                velocity += gravityModifier * swimModifier * Physics2D.gravity * Time.fixedDeltaTime * playerData.gravityTrans;
+        }
         //赋予移动方向
         velocity.x = targetVelocity.x;
         isGround = false;
@@ -93,6 +108,17 @@ public class PhysicalObject : MonoBehaviour
         else
         {
             playerData.canJump = false;
+        }
+
+        if(playerData.buff.contains(Buff.CANSWIM) && playerData.buff.contains(Buff.SWIM))
+        {
+            playerData.canJump = false;
+            playerData.canRush = false;
+            playerData.canSwim = true;
+        }
+        else
+        {
+            playerData.canSwim = false;
         }
 
         Vector2 deltaPosition = velocity * Time.deltaTime;

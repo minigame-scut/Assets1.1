@@ -11,6 +11,8 @@ public class PlayerPlatformController : PhysicalObject
     public float curJumpSpeed;
     //当前冲刺速度
     public float curRushSpeed;
+    //游泳速度
+    private float swimSpeed = 3.0f;
     //阴影对象
     public GameObject shadow;
     //输入计时器，用于防止出生动画未播完玩家就开始进行操作
@@ -21,11 +23,12 @@ public class PlayerPlatformController : PhysicalObject
     public Transform elasticTrans;
     //受到风力方向
     public Transform blowTrans;
-    //旋转角
-    //float angleX;
-    //float angleY;
     //精灵
     public SpriteRenderer spriteRenderer;
+    //地面碰撞子物体
+    public GameObject groundCollider;
+    //游泳碰撞子物体
+    public GameObject swimCollider; 
 
     Vector2 move;
     
@@ -53,12 +56,30 @@ public class PlayerPlatformController : PhysicalObject
     //重写PhysicalObject中计算玩家速度的函数
     protected override void playerControl()
     {
+        if(playerData.buff.contains(Buff.SWIM))
+        {
+            if(swimCollider != null && groundCollider != null)
+            {
+                swimCollider.SetActive(true);
+                groundCollider.SetActive(false);
+            }
+        }
+        else
+        {
+            if (swimCollider != null && groundCollider != null)
+            {
+                swimCollider.SetActive(false);
+                groundCollider.SetActive(true);
+            }
+        }
         //是否暂停
         if (isPause)
             return;
-        
-        //angleX = (playerData.gravityTrans == -1) ? 180 : 0;
-        //angleY = (playerData.dir == 1) ? 0 : 180;
+
+        if(playerData.buff.contains(Buff.SWIM) && (!playerData.buff.contains(Buff.CANSWIM)))
+        {
+            EventCenter.Broadcast(MyEventType.DEATH);
+        }
 
         spriteRenderer.flipX = (playerData.dir == 1) ? false : true;
         spriteRenderer.flipY = (playerData.gravityTrans == -1) ? true : false;
@@ -142,6 +163,15 @@ public class PlayerPlatformController : PhysicalObject
             EventCenter.Broadcast(MyEventType.RUSH);
             return;
         }
+        //游泳
+        if(Input.GetButtonDown("Jump") && playerData.canSwim)
+        {
+            swim();
+        }
+        else if(Input.GetButtonUp("Jump") && playerData.canSwim)
+        {
+            isUp = false;
+        }
         //跳跃
         if (Input.GetButtonDown("Jump") && playerData.canJump)
         {
@@ -215,6 +245,22 @@ public class PlayerPlatformController : PhysicalObject
         {
             anim.SetBool("isDrop", false);
         }
+        if(isSwim)
+        {
+            anim.SetBool("isSwim", true);
+        }
+        else
+        {
+            anim.SetBool("isSwim", false);
+        }
+        if(isUp)
+        {
+            anim.SetBool("isUp", true);
+        }
+        else
+        {
+            anim.SetBool("isUp", false);
+        }
         if (isRush)
         {
             anim.SetBool("isRush", true);
@@ -252,6 +298,15 @@ public class PlayerPlatformController : PhysicalObject
         //this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
         move.x = playerData.dir;
         isWalk = true;
+    }
+    //游泳
+    void swim()
+    {
+        isSwim = true;
+        isJump = false;
+        isRush = false;
+        isUp = true;
+        velocity.y = playerData.gravityTrans * swimSpeed;
     }
     //跳跃
     void jump()

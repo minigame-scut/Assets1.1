@@ -30,7 +30,6 @@ public class SManager : MonoBehaviour
         {
             return SManager.instance;
         }
-
     }
     void Awake()
     {
@@ -246,6 +245,13 @@ public class SManager : MonoBehaviour
             gamePlayer.GetComponent<PlayerPlatformController>().blowTrans = blowTrans;
         } 
     }
+    private void responseForPREPARESWIM()
+    {
+        if (gamePlayer != null)
+        {
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.add(Buff.CANSWIM);
+        }
+    }
     private void responseForWALK()
     {
 
@@ -314,6 +320,20 @@ public class SManager : MonoBehaviour
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.SUPERRUSH);
         }
     }
+    private void responseForINPOOL()
+    {
+        if (gamePlayer != null)
+        {
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.add(Buff.SWIM);
+        }
+    }
+    private void responseForOUTPOOL()
+    {
+        if (gamePlayer != null)
+        {
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.SWIM);
+        }
+    }
     private void responseForELASTICDELETE()
     {
         //接受到ELASTICDELETE信号后设置弹力计时器时间为0，并移除弹力buff
@@ -346,6 +366,14 @@ public class SManager : MonoBehaviour
         if(gamePlayer != null)
         {
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.BLOW);
+        }
+    }
+    private void responseForSWIMDELETE()
+    {
+        //接受到SWIMDELETE信号后移除该buff
+        if (gamePlayer != null)
+        {
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.CANSWIM);
         }
     }
     private void responseForDESTROY(GameObject other)
@@ -402,16 +430,20 @@ public class SManager : MonoBehaviour
         EventCenter.AddListener(MyEventType.INITDOOR, responseForINITDOOR);
         EventCenter.AddListener<Transform>(MyEventType.BLOWDOOR, responseForBLOWDOOR);
         EventCenter.AddListener(MyEventType.LEVELDOOR, responseForLEVELDOOR);
+        EventCenter.AddListener(MyEventType.PREPARESWIM, responseForPREPARESWIM);
         //监听玩家信号
         EventCenter.AddListener(MyEventType.WALK, responseForWALK);
         EventCenter.AddListener(MyEventType.DEATH, responseForDEATH);
         EventCenter.AddListener(MyEventType.JUMP, responseForJUMP);
         EventCenter.AddListener(MyEventType.RUSH, responseForRUSH);
+        EventCenter.AddListener(MyEventType.INPOOL, responseForINPOOL);
+        EventCenter.AddListener(MyEventType.OUTPOOL, responseForOUTPOOL);
         EventCenter.AddListener(MyEventType.ELASTICDELETE, responseForELASTICDELETE);
         EventCenter.AddListener(MyEventType.REBIRTH, responseForREBIRTH);
         EventCenter.AddListener(MyEventType.INITJUMPDELETE, responseForINITJUMPDELETE);
         EventCenter.AddListener(MyEventType.INITRUSHDELETE, responseForINITRUSHDELETE);
         EventCenter.AddListener(MyEventType.BLOWDELETE, responseForBLOWDELETE);
+        EventCenter.AddListener(MyEventType.SWIMDELETE, responseForSWIMDELETE);
         //
         EventCenter.AddListener<GameObject>(MyEventType.DESTROY, responseForDESTROY);
 

@@ -25,10 +25,12 @@
     //人物的方向 -1左 1右
     public int dir = 1;
 
-    //判断是否在地上
+    //判断能否跳跃
     public bool canJump = true;
-    //判断是否在冲刺
+    //判断能否冲刺
     public bool canRush = true;
+    //能否游泳
+    public bool canSwim = false;
     //重力信号
     public int gravityTrans = 1;
     public int flagGravity = 0;
