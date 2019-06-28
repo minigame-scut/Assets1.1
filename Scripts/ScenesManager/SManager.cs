@@ -265,10 +265,19 @@ public class SManager : MonoBehaviour
     private void responseForDEATH()
     {
         //为人物设置死亡状态
-
+        
         //销毁人物，3s延迟后销毁
         if (gamePlayer != null)
         {
+            if (gamePlayer.GetComponent<PlayerPlatformController>().groundBubble.activeInHierarchy)
+            {
+                gamePlayer.GetComponent<PlayerPlatformController>().groundBubble.SetActive(false);
+            }
+            else if (gamePlayer.GetComponent<PlayerPlatformController>().swimBubble.activeInHierarchy)
+            {
+                gamePlayer.GetComponent<PlayerPlatformController>().swimBubble.SetActive(false);
+            }
+
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().isDead = true;
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().numOfDeath++;
             Destroy(gamePlayer, 1.67f);

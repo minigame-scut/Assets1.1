@@ -12,7 +12,9 @@ public class PlayerPlatformController : PhysicalObject
     //当前冲刺速度
     public float curRushSpeed;
     //游泳速度
-    private float swimSpeed = 3.0f;
+    private float swimSpeed = 2.0f;
+    //游泳计时器
+    private float swimTimer = 0;
     //阴影对象
     public GameObject shadow;
     //输入计时器，用于防止出生动画未播完玩家就开始进行操作
@@ -28,7 +30,11 @@ public class PlayerPlatformController : PhysicalObject
     //地面碰撞子物体
     public GameObject groundCollider;
     //游泳碰撞子物体
-    public GameObject swimCollider; 
+    public GameObject swimCollider;
+    //地面冰门气罩
+    public GameObject groundBubble;
+    //水中冰门气罩
+    public GameObject swimBubble;
 
     Vector2 move;
     
@@ -47,16 +53,61 @@ public class PlayerPlatformController : PhysicalObject
             StartCoroutine(setBirthAnimAsFalse());
         }
 
-        //angleX = (playerData.gravityTrans == -1) ? 180 : 0;
-        //angleY = (playerData.dir == 1) ? 0 : 180;
-        
-        //this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     //重写PhysicalObject中计算玩家速度的函数
     protected override void playerControl()
     {
-        if(playerData.gravityTrans == -1)
+        //是否暂停
+        if (isPause)
+            return;
+
+        //游泳计时器
+        if (playerData.buff.contains(Buff.CANSWIM))
+        {
+            swimTimer += Time.fixedDeltaTime;
+            if (swimTimer >= 0.7f)
+            {
+                if (groundBubble.activeInHierarchy)
+                {
+                    groundBubble.GetComponent<Bubble>().isInit = false;
+                    groundBubble.GetComponent<Bubble>().isNearToDis = false;
+                }
+                else if (swimBubble.activeInHierarchy)
+                {
+                    swimBubble.GetComponent<Bubble>().isInit = false;
+                    swimBubble.GetComponent<Bubble>().isNearToDis = false;
+                }
+            }
+            if (swimTimer >= 15.0f)
+            {
+                if(groundBubble.activeInHierarchy)
+                {
+                    groundBubble.GetComponent<Bubble>().isNearToDis = true;
+                }
+                else if(swimBubble.activeInHierarchy)
+                {
+                    swimBubble.GetComponent<Bubble>().isNearToDis = true;
+                }
+            }
+            if(swimTimer >= 20.0f)
+            {
+                swimTimer = 0;
+                EventCenter.Broadcast(MyEventType.SWIMDELETE);
+                if (groundBubble.activeInHierarchy)
+                {
+                    groundBubble.GetComponent<Bubble>().isNearToDis = false;
+                    groundBubble.SetActive(false);
+                }
+                else if (swimBubble.activeInHierarchy)
+                {
+                    swimBubble.GetComponent<Bubble>().isNearToDis = false;
+                    swimBubble.SetActive(false);
+                }
+            }
+        }
+        //判断重力方向，翻转玩家的碰撞体
+        if (playerData.gravityTrans == -1)
         {
             groundCollider.transform.localEulerAngles = new Vector3(0, 0, 180);
         }
@@ -64,9 +115,19 @@ public class PlayerPlatformController : PhysicalObject
         {
             groundCollider.transform.localEulerAngles = Vector3.zero;
         }
-        if(playerData.buff.contains(Buff.SWIM))
+        //判断人物方向，翻转swim子物体的碰撞体
+        if(playerData.dir == -1)
         {
-            if(swimCollider != null && groundCollider != null)
+            swimCollider.transform.localEulerAngles = new Vector3(0, 180, 90);
+        }
+        else
+        {
+            swimCollider.transform.localEulerAngles = new Vector3(0, 0, 90);
+        }
+        //判断玩家是否持有SWIM的buff，如果有则将玩家碰撞体改为游泳状态的碰撞体
+        if (playerData.buff.contains(Buff.SWIM))
+        {
+            if (swimCollider != null && groundCollider != null)
             {
                 swimCollider.SetActive(true);
                 groundCollider.SetActive(false);
@@ -80,12 +141,10 @@ public class PlayerPlatformController : PhysicalObject
                 groundCollider.SetActive(true);
             }
         }
-        //是否暂停
-        if (isPause)
-            return;
-
-        if(playerData.buff.contains(Buff.SWIM) && (!playerData.buff.contains(Buff.CANSWIM)))
+        //判断玩家是否同时持有CANSWIM和SWIM的buff，如果持有SWIM但没有CANSWIM则玩家死亡
+        if (playerData.buff.contains(Buff.SWIM) && (!playerData.buff.contains(Buff.CANSWIM)) && (!playerData.isDead))
         {
+            EventCenter.Broadcast(MyEventType.SHAKESCREEN);
             EventCenter.Broadcast(MyEventType.DEATH);
         }
 
@@ -404,5 +463,24 @@ public class PlayerPlatformController : PhysicalObject
     {
         yield return new WaitForSeconds(0.958f);
         anim.SetBool("isBirth", false);
+    }
+    //判断是否碰撞到冰冻门，如果碰到则刷新swimTimer
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.transform.tag == "coldDoor")
+        {
+            swimTimer = 0;
+            if(groundCollider.activeInHierarchy)
+            {
+                groundBubble.SetActive(true);
+                groundBubble.GetComponent<Bubble>().isInit = true;
+                Debug.Log(groundBubble.GetComponent<Bubble>().isInit);
+            }
+            else
+            {
+                swimBubble.SetActive(true);
+                swimBubble.GetComponent<Bubble>().isInit = true;
+            }
+        }
     }
 }

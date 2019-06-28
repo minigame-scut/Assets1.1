@@ -77,7 +77,7 @@ public class PhysicalObject : MonoBehaviour
 
     void FixedUpdate()
     {
-       // Debug.Log(isSwim);
+        Debug.Log(isSwim);
         //Physics2D.gravity = (0,-9.8f)  模拟重力加速
         if (!(playerData.buff.contains(Buff.SWIM) && playerData.buff.contains(Buff.CANSWIM)))
         {
