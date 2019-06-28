@@ -90,6 +90,18 @@ public class ResourceManager : MonoBehaviour
         spriteDictionary.Add("Image/Roles/shilaimu/sprite_3", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_3"));
         spriteDictionary.Add("Image/Roles/shilaimu/sprite_4", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_4"));
         spriteDictionary.Add("Image/Roles/shilaimu/sprite_5", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_5"));
+        spriteDictionary.Add("Image/Roles/shilaimu/sprite_6", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_6"));
+         spriteDictionary.Add("Image/Maps/关卡3/l3-number/n0", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n0"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n1", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n1"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n2", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n2"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n3", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n3"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n4", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n4"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n5", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n5"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n6", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n6"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n7", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n7"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n8", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n8"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n9", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n9"));
+
 
     }
     public AudioClip getClip(string name)
