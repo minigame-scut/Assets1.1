@@ -70,7 +70,7 @@ public class SnowEffect: MonoBehaviour
         var mr = GetComponent<Renderer>();
         mr.material.SetFloat("_Range", range);
         mr.material.SetFloat("_RangeR", rangeR_);
-        mr.material.SetFloat("_Size", 0.5f);
+        mr.material.SetFloat("_Size", 0.35f);
         mr.material.SetVector("_MoveTotal", move_);
         mr.material.SetVector("_CamUp", Camera.main.transform.up);
         mr.material.SetVector("_TargetPosition", target_position);
