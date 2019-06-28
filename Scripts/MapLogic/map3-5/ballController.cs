@@ -74,6 +74,12 @@ public class ballController : MonoBehaviour
         if (!isMove)
         {
             timer += Time.fixedDeltaTime;
+            //原地不动就变为史莱姆
+            if (timer > maxStayTime / 4) {
+                spriteRenderer.sprite = ResourceManager.GetInstance().getSptite("Image/Roles/shilaimu/sprite_6") as Sprite;
+                if (this.transform.position.x < GameManager.instance.getSceneManager().GetComponent<SManager>().getGamePlayer().transform.position.x)
+                    spriteRenderer.flipX = true;
+            }
             if (timer > maxStayTime)
             {
                 System.Random random = new System.Random();
@@ -83,7 +89,7 @@ public class ballController : MonoBehaviour
                     xF *= -1;
                 if (random.Next() % 2 == 0)
                     yF *= -1;
-
+                spriteRenderer.sprite = ResourceManager.GetInstance().getSptite("Image/Roles/shilaimu/sprite_2") as Sprite;
                 rb2d.AddForce(new Vector2(xF, yF));
             }
         }

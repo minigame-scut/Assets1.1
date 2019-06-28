@@ -19,7 +19,7 @@ public class map34Logic : MonoBehaviour
 
     public List<Transform> pcoord;
     float proTimer = 0;
-    float proTime = 8f;
+    float proTime =13f;
 
     float ballSlimeProTimer = 2;
     float ballSlimeProTime = 9;

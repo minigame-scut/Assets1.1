@@ -13,6 +13,12 @@ public class map35Logic : MonoBehaviour
     float timer2 = 0;
     float ScoreTime = 1f;
     public Text timeText;
+    //计时器图片
+    List<Sprite> numSp;
+
+    GameObject[] timerObject;
+
+
 
     //史莱姆数量
     int maxSlmSum = 2;
@@ -37,10 +43,25 @@ public class map35Logic : MonoBehaviour
     void Start()
     {
         ballPre = ResourceManager.GetInstance().getGameObject("GameManagerRes/ball");
-        timeText.text = mapTime.ToString()+"s";
+      
 
         EventCenter.AddListener(MyEventType.DEATH, onPlayerDeath);
-       
+
+        numSp = new List<Sprite>();
+        for(int i = 0; i < 10; i++)
+        {
+            numSp.Add(ResourceManager.GetInstance().getSptite("Image/Maps/关卡3/l3-number/n" + i));
+        }
+  
+
+        timerObject = new GameObject[3];
+        timerObject[0] = GameObject.Find("timer1");
+        timerObject[1] = GameObject.Find("timer2");
+        timerObject[2] = GameObject.Find("timer3");
+
+        timerObject[0].GetComponent<SpriteRenderer>().sprite = numSp[mapTime / 100];
+        timerObject[1].GetComponent<SpriteRenderer>().sprite = numSp[(mapTime - (mapTime / 100 * 100)) / 10];
+        timerObject[2].GetComponent<SpriteRenderer>().sprite = numSp[mapTime % 10];
     }
 
     // Update is called once per frame
@@ -71,7 +92,11 @@ public class map35Logic : MonoBehaviour
             {
                 timer2 = 0;
                 mapTime--;
-                timeText.text = mapTime.ToString() + "s";
+                timerObject[0].GetComponent<SpriteRenderer>().sprite = numSp[mapTime / 100];
+                timerObject[1].GetComponent<SpriteRenderer>().sprite = numSp[(mapTime - (mapTime / 100 * 100))/10 ];
+                timerObject[2].GetComponent<SpriteRenderer>().sprite = numSp[mapTime %10];
+
+                // timeText.text = mapTime.ToString() + "s";
             }
             if (mapTime == 0 && !isPass)
             {

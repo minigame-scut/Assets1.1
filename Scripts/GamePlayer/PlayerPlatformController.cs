@@ -56,6 +56,14 @@ public class PlayerPlatformController : PhysicalObject
     //重写PhysicalObject中计算玩家速度的函数
     protected override void playerControl()
     {
+        if(playerData.gravityTrans == -1)
+        {
+            groundCollider.transform.localEulerAngles = new Vector3(0, 0, 180);
+        }
+        else
+        {
+            groundCollider.transform.localEulerAngles = Vector3.zero;
+        }
         if(playerData.buff.contains(Buff.SWIM))
         {
             if(swimCollider != null && groundCollider != null)
