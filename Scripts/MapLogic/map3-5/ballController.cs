@@ -77,6 +77,7 @@ public class ballController : MonoBehaviour
             //原地不动就变为史莱姆
             if (timer > maxStayTime / 4) {
                 spriteRenderer.sprite = ResourceManager.GetInstance().getSptite("Image/Roles/shilaimu/sprite_6") as Sprite;
+                if (GameManager.instance.getSceneManager().GetComponent<SManager>().getGamePlayer()!= null)
                 if (this.transform.position.x < GameManager.instance.getSceneManager().GetComponent<SManager>().getGamePlayer().transform.position.x)
                     spriteRenderer.flipX = true;
             }

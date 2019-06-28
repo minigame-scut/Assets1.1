@@ -20,7 +20,7 @@ public class SnowEffect: MonoBehaviour
 
     void Start()
     {
-        range = 16f;
+        range = 64f;
         rangeR_ = 1.0f / range;
         m_vertices = new Vector3[SNOW_NUM * 4];
         for (var i = 0; i < SNOW_NUM; ++i)
@@ -70,7 +70,7 @@ public class SnowEffect: MonoBehaviour
         var mr = GetComponent<Renderer>();
         mr.material.SetFloat("_Range", range);
         mr.material.SetFloat("_RangeR", rangeR_);
-        mr.material.SetFloat("_Size", 0.1f);
+        mr.material.SetFloat("_Size", 0.5f);
         mr.material.SetVector("_MoveTotal", move_);
         mr.material.SetVector("_CamUp", Camera.main.transform.up);
         mr.material.SetVector("_TargetPosition", target_position);
