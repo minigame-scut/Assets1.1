@@ -53,6 +53,15 @@ public class SceneMapData
         mapData.Add("nextPlace2-2-1", "birthPlace2-3-1");
         mapData.Add("nextPlace2-3-1", "birthPlace2-4-1");
         mapData.Add("nextPlace2-4-1", "birthPlace2-5-1");
+        mapData.Add("nextPlace2-6-1", "birthPlace3-0-1");
+        mapData.Add("nextPlace3-0-1", "birthPlace3-1-1");
+        mapData.Add("nextPlace3-1-1", "birthPlace3-2-1");
+        mapData.Add("nextPlace3-2-1", "birthPlace3-3-1");
+        mapData.Add("nextPlace3-3-1", "birthPlace3-4-1");
+        mapData.Add("nextPlace3-4-1", "birthPlace3-5-1");
+
+
+
 
         //传送门映射
         mapData.Add("transDoor1-1-1-1", "transDoor1-1-1-2");
