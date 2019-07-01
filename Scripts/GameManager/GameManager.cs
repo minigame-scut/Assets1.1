@@ -450,10 +450,10 @@ public class GameManager : MonoBehaviour
             changeMusicVolum(0.8f);
             changeSoundVolum(0.8f);
            
-            if (sceneName == "map1-0"||sceneName=="map2-0")
+            if (sceneName.EndsWith("-0"))
             {
-                Debug.Log("123456");
-                aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map1-0");
+                //Debug.Log("123456");
+                aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map-0");
                 return;
             }
             if(sceneName == "Interface")
@@ -465,6 +465,8 @@ public class GameManager : MonoBehaviour
                 aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map1");
             if (sceneName.StartsWith("map2"))
                 aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map2");
+            if (sceneName.StartsWith("map3"))
+                aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map3");
 
             return;
         }

@@ -59,7 +59,11 @@ public class slimeController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.transform.tag == "ground" && coll.contacts[0].normal.y == 1 && coll.contacts[0].normal.x == 0)
+        {
             isJump = false;
+            EventCenter.Broadcast(MyEventType.SLMJUMP);
+        }
+            
         if (coll.transform.tag == "trap")
             Destroy(gameObject);
     }
@@ -68,7 +72,11 @@ public class slimeController : MonoBehaviour
     void OnCollisionExit2D(Collision2D coll)
     {
         if (coll.transform.tag == "ground")
+        {
             isJump = true;
+            
+        }
+            
      
     }
 

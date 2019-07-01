@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
 
         //给定的音效资源必须在Resource文件夹中
         //Debug.Log("play");
-        if (name == "Music/Sounds/Walk")
+        if (name == "Music/Sounds/Walk" || name == "Music/Sounds/Swimming")
         {
             if (!soundPlayer.isPlaying)
             {

@@ -17,10 +17,16 @@ public class ProtectDoor : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.transform.tag == "player")
+        if (other.transform.tag == "player")
         {
             EventCenter.Broadcast(MyEventType.PREPARESWIM);
-            Debug.Log("protectDoor");
+            GameObject effect = transform.Find("snowEffect").gameObject;
+            if (effect != null)
+            {
+                //if(!effect.GetComponent<ParticleSystem>().isPlaying)
+                effect.GetComponent<ParticleSystem>().Play();
+                //Debug.Log("protectDoor");
+            }
         }
     }
 }

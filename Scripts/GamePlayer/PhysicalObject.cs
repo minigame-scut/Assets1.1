@@ -69,7 +69,13 @@ public class PhysicalObject : MonoBehaviour
 
         //广播移动信号
         if (velocity != Vector2.zero && isGround)
-            EventCenter.Broadcast(MyEventType.WALK);
+        {
+            if(isSwim)
+                EventCenter.Broadcast(MyEventType.SWIMMING);
+            else
+                EventCenter.Broadcast(MyEventType.WALK);
+        }
+            
     }
     protected virtual void playerControl() { }
 
