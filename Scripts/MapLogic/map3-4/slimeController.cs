@@ -19,6 +19,9 @@ public class slimeController : MonoBehaviour
     //目标位置
     Vector3 toPos;
 
+    //声音定时器
+    float voiceTimer = 0;
+    bool isVoice = false;
 
     //是否在空中
      bool isJump = false;
@@ -52,16 +55,35 @@ public class slimeController : MonoBehaviour
 
             nowCoordIndex++;
         }
+
+        if (isVoice)
+        {
+            voiceTimer += Time.deltaTime;
+            if (voiceTimer > 1f)
+            {
+                voiceTimer = 0;
+                isVoice = false;
+            }
+               
+        }
            
-        
+
+
+
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.transform.tag == "ground" && coll.contacts[0].normal.y == 1 && coll.contacts[0].normal.x == 0)
         {
+            if(isJump && !isVoice)
+            {
+                EventCenter.Broadcast(MyEventType.SLMJUMP);
+                isVoice = true;
+            }
+             
             isJump = false;
-            EventCenter.Broadcast(MyEventType.SLMJUMP);
+        
         }
             
         if (coll.transform.tag == "trap")
@@ -73,6 +95,7 @@ public class slimeController : MonoBehaviour
     {
         if (coll.transform.tag == "ground")
         {
+          
             isJump = true;
             
         }
