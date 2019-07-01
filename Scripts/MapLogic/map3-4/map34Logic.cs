@@ -41,17 +41,23 @@ public class map34Logic : MonoBehaviour
 
         BallSlime bs = new BallSlime();
         proBallSlime(bs);
+
+      
       
     }
 
     // Update is called once per frame
     void Update()
     {
+        //将玩家的刚体设置为运动学刚体
+        if (GameManager.instance.getSceneManager().GetComponent<SManager>().getGamePlayer().GetComponent<Rigidbody2D>().bodyType
+            != RigidbodyType2D.Kinematic)
+            GameManager.instance.getSceneManager().GetComponent<SManager>().getGamePlayer().GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         ballSlimeIsReach();
         proTimer += Time.deltaTime;
         if(proTimer > proTime)
         {
-            GameObject.Instantiate(slimePre, this.transform.position, Quaternion.identity);
+         GameObject.Instantiate(slimePre, this.transform.position, Quaternion.identity);
             proTimer = 0;
         }
         ballSlimeProTimer += Time.deltaTime;
@@ -59,7 +65,7 @@ public class map34Logic : MonoBehaviour
         {
             //丢出新的史莱姆
             BallSlime bs = new BallSlime();
-            proBallSlime(bs);
+           proBallSlime(bs);
             ballSlimeProTimer = 0;
 
         }

@@ -16,6 +16,10 @@ public class ballController : MonoBehaviour
 
     Ray2D ray;
 
+    //声音定时器
+    float voiceTimer = 0;
+    bool isVoice = false;
+
     public Vector2 moveDir;
     //上一时刻的位置
     Vector2 prePos;
@@ -56,7 +60,16 @@ public class ballController : MonoBehaviour
         moveDir = moveDir.normalized;
         ballJump();
 
+        if (isVoice)
+        {
+            voiceTimer += Time.fixedDeltaTime;
+            if (voiceTimer > 0.6f)
+            {
+                voiceTimer = 0;
+                isVoice = false;
+            }
 
+        }
     }
 
     private void OnCollisionExit2D(Collision2D coll)
@@ -145,6 +158,11 @@ private void OnCollisionEnter2D(Collision2D collision)
 
     IEnumerator Coll(Vector2 force, dir direction)
     {
+        if (!isVoice)
+        {
+            EventCenter.Broadcast(MyEventType.SLMJUMP);
+            isVoice = true;
+        }
         rb2d.constraints = RigidbodyConstraints2D.FreezePosition;
         switch (direction)
         {
