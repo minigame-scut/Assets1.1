@@ -461,12 +461,12 @@ public class GameManager : MonoBehaviour
                 aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/Interface");
                 return;
             }
-            if(sceneName.StartsWith("map1"))
+            //if(sceneName.StartsWith("map1"))
                 aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map1");
-            if (sceneName.StartsWith("map2"))
-                aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map2");
-            if (sceneName.StartsWith("map3"))
-                aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map3");
+            //if (sceneName.StartsWith("map2"))
+            //    aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map2");
+            //if (sceneName.StartsWith("map3"))
+            //    aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map3");
 
             return;
         }
