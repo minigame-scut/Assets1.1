@@ -24,7 +24,7 @@ public class map35Logic : MonoBehaviour
     int maxSlmSum = 2;
     public int slmSum = 0;
     //关卡时间
-    public int mapTime = 66;
+    int mapTime =100;
 
     //是否通关
     bool isPass = false;
