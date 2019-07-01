@@ -251,6 +251,11 @@ public class SManager : MonoBehaviour
         {
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.add(Buff.CANSWIM);
         }
+        //播放IceDoor音效
+        if (audioManager != null)
+        {
+            audioManager.GetComponent<AudioManager>().PlaySound("Music/Sounds/IceDoor");
+        }
     }
     private void responseForWALK()
     {
@@ -456,11 +461,8 @@ public class SManager : MonoBehaviour
         //
         EventCenter.AddListener<GameObject>(MyEventType.DESTROY, responseForDESTROY);
 
-        //监听BOSS信号
-        //EventCenter.AddListener(MyEventType.BOSSHURT, responseForBOSSHURT);
-        //EventCenter.AddListener(MyEventType.BOSSWING, responseForBOSSWING);
-        //EventCenter.AddListener(MyEventType.BATS, responseForBATS);
-        //EventCenter.AddListener(MyEventType.BOSSATTACK, responseForBOSSATTACK);
+        //SLM
+        EventCenter.AddListener(MyEventType.SLMJUMP,responseForSLMJUMP);
     }
 
     IEnumerator createNewPlayerInBirthPlaceAfterDeath()
@@ -501,4 +503,12 @@ public class SManager : MonoBehaviour
     //        audioManager.GetComponent<AudioManager>().PlaySound("Music/Boss/Attack");
     //    }
     //}
+
+    void responseForSLMJUMP()
+    {
+        if (audioManager != null)
+        {
+            audioManager.GetComponent<AudioManager>().PlaySound("Music/Boss/SLMJump");
+        }
+    }
 }

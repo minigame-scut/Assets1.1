@@ -52,14 +52,21 @@ public class ResourceManager : MonoBehaviour
    
     void init()
     {
-        musicDictionary.Add("Music/BGM/map1", Resources.Load<AudioClip>("Music/BGM/map1"));
-        musicDictionary.Add("Music/BGM/map1-0", Resources.Load<AudioClip>("Music/BGM/map1-0"));
+        //加载背景音乐资源        
         musicDictionary.Add("Music/BGM/Interface", Resources.Load<AudioClip>("Music/BGM/Interface"));
+        musicDictionary.Add("Music/BGM/map1-0", Resources.Load<AudioClip>("Music/BGM/map-0"));
+        musicDictionary.Add("Music/BGM/map1", Resources.Load<AudioClip>("Music/BGM/map1"));
         musicDictionary.Add("Music/BGM/map2", Resources.Load<AudioClip>("Music/BGM/map2"));
+        musicDictionary.Add("Music/BGM/map3", Resources.Load<AudioClip>("Music/BGM/map3"));
+
+        //加载玩家音效资源
         musicDictionary.Add("Music/Sounds/Walk", Resources.Load<AudioClip>("Music/Sounds/Walk"));
         musicDictionary.Add("Music/Sounds/Jump", Resources.Load<AudioClip>("Music/Sounds/Jump"));
         musicDictionary.Add("Music/Sounds/Rush", Resources.Load<AudioClip>("Music/Sounds/Rush"));
         musicDictionary.Add("Music/Sounds/Death", Resources.Load<AudioClip>("Music/Sounds/Death"));
+        musicDictionary.Add("Music/Sounds/Swimming", Resources.Load<AudioClip>("Music/Sounds/Swimming"));
+
+        //加载道具音效资源
         musicDictionary.Add("Music/Sounds/UpSpeedDoor", Resources.Load<AudioClip>("Music/Sounds/UpSpeedDoor"));
         musicDictionary.Add("Music/Sounds/TransferDoor", Resources.Load<AudioClip>("Music/Sounds/TransferDoor"));
         musicDictionary.Add("Music/Sounds/GravityDoor", Resources.Load<AudioClip>("Music/Sounds/GravityDoor"));
@@ -68,11 +75,14 @@ public class ResourceManager : MonoBehaviour
         musicDictionary.Add("Music/Sounds/LevelDoor", Resources.Load<AudioClip>("Music/Sounds/LevelDoor"));
         musicDictionary.Add("Music/Sounds/GetProp", Resources.Load<AudioClip>("Music/Sounds/GetProp"));
         musicDictionary.Add("Music/Sounds/MagicalDoor", Resources.Load<AudioClip>("Music/Sounds/MagicalDoor"));
+        musicDictionary.Add("Music/Sounds/IceDoor", Resources.Load<AudioClip>("Music/Sounds/IceDoor"));
 
+        //加载怪物音效资源
         musicDictionary.Add("Music/Boss/Attack", Resources.Load<AudioClip>("Music/Boss/Attack"));
         musicDictionary.Add("Music/Boss/Bats", Resources.Load<AudioClip>("Music/Boss/Bats"));
         musicDictionary.Add("Music/Boss/Hurt", Resources.Load<AudioClip>("Music/Boss/Hurt"));
         musicDictionary.Add("Music/Boss/Wing", Resources.Load<AudioClip>("Music/Boss/Wing"));
+        musicDictionary.Add("Music/Boss/SLMJump", Resources.Load<AudioClip>("Music/Boss/SLMJump"));
 
         gameObjectDictionary.Add("GameManagerRes/player", Resources.Load<GameObject>("GameManagerRes/player"));
         gameObjectDictionary.Add("GameManagerRes/bat", Resources.Load<GameObject>("GameManagerRes/bat"));
@@ -91,7 +101,7 @@ public class ResourceManager : MonoBehaviour
         spriteDictionary.Add("Image/Roles/shilaimu/sprite_4", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_4"));
         spriteDictionary.Add("Image/Roles/shilaimu/sprite_5", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_5"));
         spriteDictionary.Add("Image/Roles/shilaimu/sprite_6", Resources.Load<Sprite>("Image/Roles/shilaimu/sprite_6"));
-         spriteDictionary.Add("Image/Maps/关卡3/l3-number/n0", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n0"));
+        spriteDictionary.Add("Image/Maps/关卡3/l3-number/n0", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n0"));
         spriteDictionary.Add("Image/Maps/关卡3/l3-number/n1", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n1"));
         spriteDictionary.Add("Image/Maps/关卡3/l3-number/n2", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n2"));
         spriteDictionary.Add("Image/Maps/关卡3/l3-number/n3", Resources.Load<Sprite>("Image/Maps/关卡3/l3-number/n3"));
