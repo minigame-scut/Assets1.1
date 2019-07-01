@@ -24,7 +24,7 @@ public class map35Logic : MonoBehaviour
     int maxSlmSum = 2;
     public int slmSum = 0;
     //关卡时间
-    int mapTime =100;
+    int mapTime = 60;
 
     //是否通关
     bool isPass = false;
@@ -54,14 +54,14 @@ public class map35Logic : MonoBehaviour
         }
   
 
-        timerObject = new GameObject[3];
+        timerObject = new GameObject[2];
         timerObject[0] = GameObject.Find("timer1");
         timerObject[1] = GameObject.Find("timer2");
-        timerObject[2] = GameObject.Find("timer3");
 
-        timerObject[0].GetComponent<SpriteRenderer>().sprite = numSp[mapTime / 100];
-        timerObject[1].GetComponent<SpriteRenderer>().sprite = numSp[(mapTime - (mapTime / 100 * 100)) / 10];
-        timerObject[2].GetComponent<SpriteRenderer>().sprite = numSp[mapTime % 10];
+
+        
+        timerObject[0].GetComponent<SpriteRenderer>().sprite = numSp[(mapTime - (mapTime / 100 * 100)) / 10];
+        timerObject[1].GetComponent<SpriteRenderer>().sprite = numSp[mapTime % 10];
     }
 
     // Update is called once per frame
@@ -92,9 +92,9 @@ public class map35Logic : MonoBehaviour
             {
                 timer2 = 0;
                 mapTime--;
-                timerObject[0].GetComponent<SpriteRenderer>().sprite = numSp[mapTime / 100];
-                timerObject[1].GetComponent<SpriteRenderer>().sprite = numSp[(mapTime - (mapTime / 100 * 100))/10 ];
-                timerObject[2].GetComponent<SpriteRenderer>().sprite = numSp[mapTime %10];
+              
+                timerObject[0].GetComponent<SpriteRenderer>().sprite = numSp[(mapTime - (mapTime / 100 * 100))/10 ];
+                timerObject[1].GetComponent<SpriteRenderer>().sprite = numSp[mapTime %10];
 
                 // timeText.text = mapTime.ToString() + "s";
             }
@@ -126,6 +126,6 @@ public class map35Logic : MonoBehaviour
     void onPlayerDeath()
     {
         playerIsDeath = true;
-        mapTime = 120;
+        mapTime = 60;
     }
 }
