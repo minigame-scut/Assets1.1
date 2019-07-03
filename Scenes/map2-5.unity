@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 48887474}
   - component: {fileID: 48887476}
   m_Layer: 0
-  m_Name: nextPlace2-5-2
+  m_Name: nextPlace2-5-1
   m_TagString: nextPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
