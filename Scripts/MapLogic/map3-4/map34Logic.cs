@@ -50,8 +50,8 @@ public class map34Logic : MonoBehaviour
     void Update()
     {
         //将玩家的刚体设置为运动学刚体
-        if (GameManager.instance.getSceneManager().GetComponent<SManager>().getGamePlayer().GetComponent<Rigidbody2D>().bodyType
-            != RigidbodyType2D.Kinematic)
+        if (GameManager.instance.getSceneManager().GetComponent<SManager>().getGamePlayer() != null && GameManager.instance.getSceneManager().GetComponent<SManager>().getGamePlayer().GetComponent<Rigidbody2D>().bodyType
+            != RigidbodyType2D.Kinematic )
             GameManager.instance.getSceneManager().GetComponent<SManager>().getGamePlayer().GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         ballSlimeIsReach();
         proTimer += Time.deltaTime;
