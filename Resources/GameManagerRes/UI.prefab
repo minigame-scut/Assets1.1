@@ -119,12 +119,12 @@ PrefabInstance:
     - target: {fileID: 8943347622605573657, guid: 2b7d15cf8b07dcd498e8ff6149a30225,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1463
+      value: 139.38
       objectReference: {fileID: 0}
     - target: {fileID: 8943347622605573657, guid: 2b7d15cf8b07dcd498e8ff6149a30225,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1463
+      value: 86.5
       objectReference: {fileID: 0}
     - target: {fileID: 8943347622605573657, guid: 2b7d15cf8b07dcd498e8ff6149a30225,
         type: 3}
@@ -300,6 +300,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977146285175769460, guid: a7710dd16032d334fba0410ece4729d8,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977146284503959400, guid: a7710dd16032d334fba0410ece4729d8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3977146284618363543, guid: a7710dd16032d334fba0410ece4729d8,
         type: 3}

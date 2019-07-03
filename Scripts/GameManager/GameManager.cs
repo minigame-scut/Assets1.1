@@ -504,8 +504,8 @@ public class GameManager : MonoBehaviour
             UI = GameObject.Instantiate(UIPrefab);
             //if (UI.GetComponentInChildren<Canvas>() != null)// = GameObject.Find("Main Camera(Clone)").GetComponent<Camera>();
             //UI.GetComponentInChildren<Canvas>();//.worldCamera
-            if (GameObject.Find("Main Camera") != null && UI.GetComponentInChildren<Canvas>() != null)
-                UI.GetComponentInChildren<Canvas>().worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            if (GameObject.FindWithTag("MainCamera") != null && UI.GetComponentInChildren<Canvas>() != null)
+                UI.GetComponentInChildren<Canvas>().worldCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
             UI.SetActive(false);
         }
     }
