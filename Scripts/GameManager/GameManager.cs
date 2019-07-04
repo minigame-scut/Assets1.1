@@ -149,15 +149,14 @@ public class GameManager : MonoBehaviour
             //显示UI
             UI.SetActive(true);
             //暂停游戏
-            //pauseGame(true);
+            pauseGame(true);
             //Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
-            sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = true;
+            //sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = true;
             //Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
         }
-        if (UI != null && UI.activeSelf == false && sManager.GetComponent<SManager>().getGamePlayer() != null
-            && sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause && !NPCPause)
+        if (UI != null && UI.activeSelf == false && sManager.GetComponent<SManager>().getGamePlayer() != null)
         {
-            sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = false;
+            Time.timeScale = 1f;
         }
     }
 
@@ -552,9 +551,7 @@ public class GameManager : MonoBehaviour
     }
     void pauseGame(bool ispause)
     {
-        Debug.Log("Pause:" + ispause);
-        sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = ispause;
-        NPCPause = ispause;
+        Time.timeScale = 0;
         return;
     }
 
