@@ -121,7 +121,7 @@ public class MapLogic24 : MonoBehaviour
     void setBatsActive(bool active)
     {
 
-        Debug.Log("reset");
+
         //重置蝙蝠的位置
         if (active)
         {
